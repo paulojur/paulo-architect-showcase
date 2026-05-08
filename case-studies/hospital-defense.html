@@ -1,180 +1,391 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lab: Enterprise Hardening | Paulo Oliveira</title>
+    <title>Lab: Hospital Defense | Paulo Oliveira</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/style.css">
     <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="assets/js/i18n.js" defer></script>
-
+    <script src="../assets/js/i18n.js" defer></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        tech: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            600: '#06b6d4', /* Cyan 500 (Blue Team Theme) */
+                            900: '#0f172a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        .lab-hero {
-            padding: 8rem 0 4rem;
-            text-align: center;
-            background: radial-gradient(circle at top, rgba(56, 189, 248, 0.1) 0%, transparent 70%);
+        .tech-gradient { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+        .code-glow { box-shadow: 0 0 20px rgba(6, 182, 212, 0.2); }
+        .fade-in { animation: fadeIn 1s ease-out forwards; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-
-        .lab-content {
-            max-width: 900px;
-            margin: 0 auto;
-            padding-bottom: 10rem;
-        }
-
-        .lab-section {
-            margin-bottom: 6rem;
-            padding: 3rem;
-        }
-
-        .terminal-block {
-            background: #020617;
-            border: 1px solid var(--surface-border);
-            border-radius: 12px;
-            padding: 1.5rem;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
-            margin: 1.5rem 0;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        .terminal-header {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 1rem;
-            opacity: 0.5;
-        }
-
-        .dot { width: 10px; height: 10px; border-radius: 50%; }
-        .red { background: #ff5f56; }
-        .amber { background: #ffbd2e; }
-        .green { background: #27c93f; }
-
-        .tech-tag {
-            background: rgba(56, 189, 248, 0.1);
-            color: var(--accent-blue);
-            padding: 4px 12px;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            border: 1px solid rgba(56, 189, 248, 0.2);
+        .lang-btn {
+            background: none; border: none; color: white; cursor: pointer;
+            padding: 0 5px; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;
         }
     </style>
 </head>
-<body>
+<body class="bg-tech-50 text-tech-900 font-sans antialiased">
 
-    <div class="container">
-        <header class="animate-fade-in">
-            <a href="index.html" class="font-mono" style="text-decoration: none; color: var(--text-secondary); font-size: 0.8rem; font-weight: 700;" data-i18n="nav_back">← VOLTAR_AO_PORTFOLIO</a>
-            <div class="lang-switcher font-mono" style="font-size: 0.75rem;">
-                <button onclick="setLanguage('en')" class="lang-btn" data-lang="en">EN</button>
-                <span style="opacity: 0.3">|</span>
-                <button onclick="setLanguage('pt')" class="lang-btn" data-lang="pt">PT</button>
-            </div>
-        </header>
-
-        <section class="lab-hero animate-fade-in">
-            <div class="badge" style="margin-bottom: 1.5rem;">BLUE TEAM / HARDENING</div>
-            <h1 class="text-gradient" style="font-size: 3.5rem; margin-bottom: 1.5rem;" data-i18n="lab_hosp_title">Defesa Hospitalar: Hardening & IDS</h1>
-            <p style="max-width: 700px; margin: 0 auto; color: var(--text-secondary);" data-i18n="lab_hosp_hero_desc">Resposta técnica a incidentes: Implementação de Suricata IPS, Patch Management e Auditoria Forense em ambiente crítico.</p>
-        </section>
-
-        <main class="lab-content">
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full z-50 bg-tech-900/80 backdrop-blur-md border-b border-white/10 px-6 py-4">
+        <div class="max-w-5xl mx-auto flex justify-between items-center">
+            <a href="../index.html" class="text-white font-mono text-sm hover:text-tech-600 transition-colors" data-i18n="nav_back">&larr; VOLTAR_AO_PORTFOLIO</a>
             
-            <!-- Diagnóstico -->
-            <div class="glass lab-section animate-fade-in">
-                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 2rem;">
-                    <i data-lucide="alert-triangle" style="color: #fbbf24;"></i>
-                    <h2 style="font-size: 1.8rem;">1. Diagnóstico Inicial</h2>
+            <div class="flex items-center gap-6">
+                <div class="lang-switcher font-mono" style="font-size: 0.75rem; border-right: 1px solid rgba(255,255,255,0.1); padding-right: 20px;">
+                    <button onclick="setLanguage('en')" class="lang-btn" data-lang="en">EN</button>
+                    <span style="opacity: 0.3; color: white;">|</span>
+                    <button onclick="setLanguage('pt')" class="lang-btn" data-lang="pt">PT</button>
                 </div>
-                <p style="color: var(--text-secondary); margin-bottom: 2rem;" data-i18n="lab_hosp_diag_p">A auditoria revelou um ambiente com softwares legados e vazamento de informações críticas via headers de servidor.</p>
-                
-                <div class="terminal-block">
-                    <div class="terminal-header">
-                        <div class="dot red"></div><div class="dot amber"></div><div class="dot green"></div>
-                        <span style="margin-left: 10px; font-size: 0.7rem;">audit@recon-node</span>
-                    </div>
-                    <code style="color: #94a3b8;">
-                        <span style="color: var(--accent-blue);">$</span> nmap -Pn -sV --script vuln -p 80 10.10.10.10<br>
-                        <span style="color: #ef4444;">> CVE-2022-31813: Detected (Apache 2.4.52)</span><br>
-                        <span style="color: var(--accent-blue);">$</span> curl -I http://intranet.hosp.local<br>
-                        <span>Server: Apache/2.4.52 (Ubuntu) PHP/8.1.2</span>
-                    </code>
+                <span class="text-tech-400 font-mono text-[10px] uppercase tracking-widest hidden md:inline">Defensive Security Assessment</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header / Hero -->
+    <header class="tech-gradient text-white pt-32 pb-20 px-6 relative overflow-hidden">
+        <!-- Decoration Blue Team -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-tech-600/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
+        
+        <div class="max-w-5xl mx-auto relative z-10 fade-in">
+            <div class="flex items-center gap-4 mb-6">
+                <span class="px-3 py-1 bg-tech-600 text-[10px] font-bold uppercase tracking-widest rounded flex items-center gap-2">
+                    <i data-lucide="shield" class="w-3 h-3 text-white"></i> Blue Team Lab
+                </span>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
+                Estudo de Caso: Hospital Esperanza Libre<br>
+                <span class="text-tech-600 font-mono tracking-tighter text-2xl md:text-4xl">Parte 2 - Hardening & IDS</span>
+            </h1>
+            <p class="text-lg text-slate-300 max-w-2xl leading-relaxed mb-8 border-l-2 border-tech-600 pl-4 bg-slate-800/50 p-4 rounded backdrop-blur-sm">
+                A resposta ao incidente: Implementação de Suricata IPS, Patch Management e Auditoria Forense no ambiente previamente comprometido.
+            </p>
+            <div class="flex flex-wrap gap-3 max-w-3xl font-mono text-xs">
+                <span class="px-3 py-1 bg-tech-900 border border-tech-600/50 text-tech-400 rounded">Network Forensics</span>
+                <span class="px-3 py-1 bg-tech-900 border border-tech-600/50 text-tech-400 rounded">System Hardening</span>
+                <span class="px-3 py-1 bg-tech-900 border border-tech-600/50 text-tech-400 rounded">Suricata IPS</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- 1. Diagnóstico Inicial -->
+    <section class="py-20 px-6 max-w-5xl mx-auto border-b border-slate-200">
+        <div class="flex items-center gap-3 mb-8 border-b border-slate-200 pb-4">
+            <div class="p-2 bg-amber-100 rounded text-amber-600">
+                <i data-lucide="alert-triangle" class="w-6 h-6"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-tech-900">1. Diagnóstico Inicial</h2>
+        </div>
+        
+        <p class="text-tech-600 text-lg leading-relaxed mb-8">
+            A auditoria externa (feita do container Audit <code>10.10.10.50</code>) revelou um ambiente com softwares legados e vazamento de informações essenciais.
+        </p>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+            <div class="bg-white p-8 rounded-xl shadow-sm border-l-4 border-amber-500">
+                <h3 class="text-tech-900 font-bold text-lg mb-4">Vulnerabilidades Críticas Identificadas</h3>
+                <ul class="text-slate-600 space-y-3">
+                    <li><i data-lucide="x-circle" class="inline w-4 h-4 text-amber-500 mr-2"></i> <strong>Legacy Software:</strong> Apache 2.4.52 no host 10.10.10.10 (Vulnerável a CVEs conhecidas).</li>
+                    <li><i data-lucide="x-circle" class="inline w-4 h-4 text-amber-500 mr-2"></i> <strong>Server Tokens:</strong> Servidor expondo versão e sistema operacional diretamente nos headers HTTP.</li>
+                </ul>
+            </div>
+
+            <!-- Terminal -->
+            <div class="bg-tech-900 rounded-xl border border-tech-900 font-mono text-sm code-glow shadow-xl overflow-hidden flex flex-col h-full">
+                <div class="px-6 py-3 border-b border-white/10 bg-white/5 flex items-center gap-2">
+                    <div class="flex gap-1.5"><div class="w-3 h-3 rounded-full bg-red-500/80"></div><div class="w-3 h-3 rounded-full bg-amber-500/80"></div><div class="w-3 h-3 rounded-full bg-emerald-500/80"></div></div>
+                    <span class="text-slate-400 text-xs tracking-wider ml-2">audit@10.10.10.50</span>
+                </div>
+                <div class="p-6 text-slate-300 space-y-3 flex-grow">
+                    <div class="break-all"><span class="text-tech-600 font-bold mr-2">➜</span><span class="text-slate-500 mr-2">#</span>nmap -Pn -sV --script vuln -p 80 10.10.10.10</div>
+                    <div class="text-amber-400 font-bold">> CVE-2022-31813: Detected</div>
+                    <div class="break-all mt-4"><span class="text-tech-600 font-bold mr-2">➜</span><span class="text-slate-500 mr-2">#</span>nmap -sC -sV -p 80 ...</div>
+                    <div class="text-emerald-400">> http-server-header: Apache/2.4.52 (Ubuntu)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Defesa de Rede (IDS/IPS) -->
+    <section class="bg-white py-20 px-6 border-b border-slate-200">
+        <div class="max-w-5xl mx-auto">
+            <div class="flex items-center gap-3 mb-8 border-b border-slate-200 pb-4">
+                <div class="p-2 bg-tech-100 rounded text-tech-600">
+                    <i data-lucide="activity" class="w-6 h-6"></i>
+                </div>
+                <h2 class="text-3xl font-bold text-tech-900">2. Defesa de Rede (IDS/IPS)</h2>
+            </div>
+            
+            <p class="text-tech-600 text-lg leading-relaxed mb-8">
+                Implementação do <strong>Suricata</strong> no Web Server para detecção e bloqueio ativo de scans e ataques de negação de serviço (DoS).
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-200">
+                    <span class="text-tech-600 font-bold block mb-2 text-lg">Modo DROP</span>
+                    <span class="text-slate-600">Abordagem furtiva e silenciosa. O pacote é descartado sem notificar o remetente, forçando um timeout no lado do atacante.</span>
+                </div>
+                <div class="bg-amber-50 p-6 rounded-xl border border-amber-200">
+                    <span class="text-amber-600 font-bold block mb-2 text-lg">Modo REJECT</span>
+                    <span class="text-slate-600">Responde ativamente com RST (TCP) ou ICMP Port Unreachable. Corta a conexão instantaneamente.</span>
                 </div>
             </div>
 
-            <!-- Suricata -->
-            <div class="glass lab-section animate-fade-in">
-                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 2rem;">
-                    <i data-lucide="activity" style="color: var(--accent-blue);"></i>
-                    <h2 style="font-size: 1.8rem;">2. Defesa Ativa (IDS/IPS)</h2>
+            <div class="bg-[#020617] rounded-xl border border-white/10 font-mono text-sm shadow-2xl overflow-hidden code-glow mb-8">
+                <div class="px-6 py-3 border-b border-white/10 bg-white/5">
+                    <span class="text-slate-400 text-xs tracking-wider">/etc/suricata/rules/local.rules</span>
                 </div>
-                <p style="color: var(--text-secondary); margin-bottom: 2rem;" data-i18n="lab_hosp_suricata_p">Implementação do Suricata para detecção e bloqueio ativo de scans e ataques de negação de serviço (DoS) na camada de rede.</p>
-                
-                <div class="terminal-block">
-                    <div class="terminal-header">
-                        <div class="dot red"></div><div class="dot amber"></div><div class="dot green"></div>
-                        <span style="margin-left: 10px; font-size: 0.7rem;">/etc/suricata/rules/local.rules</span>
+                <div class="p-8 text-slate-300 space-y-4">
+                    <div class="text-slate-500"># Detect Nmap Scan (Alert only)</div>
+                    <div class="break-all"><span class="text-tech-600 font-bold mr-2">➜</span><span class="text-slate-300">alert tcp $EXTERNAL_NET any -> $HTTP_SERVERS 80 (msg:"Nmap Scan"; content:"Nmap"; ...)</span></div>
+                    
+                    <div class="text-slate-500 mt-6"># Block ApacheBench DoS (Drop packet)</div>
+                    <div class="break-all"><span class="text-tech-600 font-bold mr-2">➜</span><span class="text-amber-400">drop tcp any any -> $HOME_NET 80 (msg:"DoS ApacheBench"; ...)</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Web Server Hardening & 4. SSH Hardening -->
+    <section class="py-20 px-6 max-w-5xl mx-auto border-b border-slate-200 space-y-20">
+        
+        <!-- Web Hardening -->
+        <div>
+            <div class="flex items-center gap-3 mb-8 border-b border-slate-200 pb-4">
+                <div class="p-2 bg-blue-100 rounded text-blue-600">
+                    <i data-lucide="server" class="w-6 h-6"></i>
+                </div>
+                <h2 class="text-3xl font-bold text-tech-900">3. Web Server Hardening</h2>
+            </div>
+            
+            <p class="text-tech-600 text-lg leading-relaxed mb-6">
+                Mitigação das vulnerabilidades através de Patch Management (atualização via PPA externo) e ofuscação de headers no Apache.
+            </p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="bg-blue-50 p-6 rounded-xl border-l-4 border-blue-500 lg:col-span-1 h-full flex flex-col justify-center">
+                    <h3 class="font-bold text-blue-900 mb-2">Ação Corretiva</h3>
+                    <p class="text-slate-700 text-sm">
+                        Repositórios padrão LTS frequentemente travam versões antigas por estabilidade. A solução exigiu adicionar repositórios PPA (Ondrej) para obter a versão de produção mais segura e recente.
+                    </p>
+                </div>
+
+                <div class="bg-tech-900 rounded-xl border border-tech-900 font-mono text-sm shadow-xl overflow-hidden code-glow lg:col-span-2">
+                    <div class="px-6 py-3 border-b border-white/10 bg-white/5">
+                        <span class="text-slate-400 text-xs tracking-wider">Patch & Config</span>
                     </div>
-                    <code style="color: #94a3b8;">
-                        <span style="color: #64748b;"># Block ApacheBench DoS (Drop packet)</span><br>
-                        <span style="color: #38bdf8;">drop tcp any any -> $HOME_NET 80 (msg:"DoS Attack Blocked"; content:"ApacheBench"; sid:1000001;)</span>
-                    </code>
+                    <div class="p-6 text-slate-300 space-y-3">
+                        <div class="break-all"><span class="text-tech-600 font-bold mr-2">➜</span>add-apt-repository ppa:ondrej/apache2 -y</div>
+                        <div class="break-all"><span class="text-tech-600 font-bold mr-2">➜</span>apt-get install apache2 -y <span class="text-slate-500 text-xs ml-2">// Update to > 2.4.60</span></div>
+                        <div class="break-all mt-4"><span class="text-tech-600 font-bold mr-2">➜</span>vim /etc/apache2/conf-available/security.conf</div>
+                        <div class="break-all text-emerald-400 pl-4">ServerTokens Prod <span class="text-slate-500 text-xs ml-2">// Oculta versão</span></div>
+                        <div class="break-all text-emerald-400 pl-4">ServerSignature Off <span class="text-slate-500 text-xs ml-2">// Remove rodapé</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SSH Hardening -->
+        <div>
+            <div class="flex items-center gap-3 mb-8 border-b border-slate-200 pb-4">
+                <div class="p-2 bg-emerald-100 rounded text-emerald-600">
+                    <i data-lucide="lock" class="w-6 h-6"></i>
+                </div>
+                <h2 class="text-3xl font-bold text-tech-900">4. SSH & Controle de Acesso</h2>
+            </div>
+            
+            <p class="text-tech-600 text-lg leading-relaxed mb-6">
+                A auditoria anterior revelou o uso de "Porta Alta" (40022) como medida de segurança. O hardening real precisa ser aplicado nas diretivas de acesso do serviço.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 text-sm">
+                <div class="bg-rose-50 p-4 rounded-xl border border-rose-200 flex items-center gap-3">
+                    <i data-lucide="x-circle" class="w-6 h-6 text-rose-500"></i>
+                    <div>
+                        <span class="font-bold text-rose-900 block">Porta 40022</span>
+                        <span class="text-rose-700">Security by Obscurity (Ineficaz contra nmap scans)</span>
+                    </div>
+                </div>
+                <div class="bg-emerald-50 p-4 rounded-xl border border-emerald-200 flex items-center gap-3">
+                    <i data-lucide="check-circle" class="w-6 h-6 text-emerald-500"></i>
+                    <div>
+                        <span class="font-bold text-emerald-900 block">sshd_config</span>
+                        <span class="text-emerald-700">Políticas reais de restrição aplicadas</span>
+                    </div>
                 </div>
             </div>
 
-            <!-- Hardening -->
-            <div class="glass lab-section animate-fade-in">
-                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 2rem;">
-                    <i data-lucide="shield-check" style="color: #10b981;"></i>
-                    <h2 style="font-size: 1.8rem;">3. Web & SSH Hardening</h2>
+            <div class="bg-tech-900 rounded-xl border border-tech-900 font-mono text-sm shadow-xl overflow-hidden code-glow">
+                <div class="px-6 py-3 border-b border-white/10 bg-white/5">
+                    <span class="text-slate-400 text-xs tracking-wider">/etc/ssh/sshd_config</span>
                 </div>
-                <p style="color: var(--text-secondary); margin-bottom: 2rem;" data-i18n="lab_hosp_hardening_p">Mitigação de riscos via Patch Management e ofuscação de headers. Bloqueio de root remoto e limitação de tentativas de autenticação.</p>
-                
-                <div class="terminal-block">
-                    <div class="terminal-header">
-                        <div class="dot red"></div><div class="dot amber"></div><div class="dot green"></div>
-                        <span style="margin-left: 10px; font-size: 0.7rem;">/etc/apache2/conf-enabled/security.conf</span>
+                <div class="p-6 text-slate-300 space-y-3">
+                    <div class="break-all"><span class="text-emerald-400">PermitRootLogin no</span> <span class="text-slate-500 text-xs ml-4">// Bloqueio de root remoto</span></div>
+                    <div class="break-all"><span class="text-emerald-400">MaxAuthTries 3</span> <span class="text-slate-500 text-xs ml-4">// Mitigação de Brute Force</span></div>
+                    <div class="break-all"><span class="text-emerald-400">AllowGroups sshusers</span> <span class="text-slate-500 text-xs ml-4">// Princípio do Menor Privilégio</span></div>
+                    <div class="break-all mt-4"><span class="text-tech-600 font-bold mr-2">➜</span>service ssh restart</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Forense & 6. Lynis -->
+    <section class="bg-slate-50 py-20 px-6 border-b border-slate-200">
+        <div class="max-w-5xl mx-auto space-y-20">
+            
+            <!-- Forense -->
+            <div>
+                <div class="flex items-center gap-3 mb-8 border-b border-slate-200 pb-4">
+                    <div class="p-2 bg-indigo-100 rounded text-indigo-600">
+                        <i data-lucide="search-code" class="w-6 h-6"></i>
                     </div>
-                    <code style="color: #94a3b8;">
-                        ServerTokens Prod <span style="color: #64748b;"># Hide Version</span><br>
-                        ServerSignature Off <span style="color: #64748b;"># Remove Footer</span>
-                    </code>
+                    <h2 class="text-3xl font-bold text-tech-900">5. Forense de Rede (PCAP)</h2>
+                </div>
+                
+                <p class="text-tech-600 text-lg leading-relaxed mb-8">
+                    Coleta e análise de tráfego (packet capture) para evidenciar conexões maliciosas vindas do container de auditoria na rede do hospital.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+                    <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-center font-mono">
+                        <div class="text-slate-500 text-xs mb-2">// Wireshark Filter Logic</div>
+                        <div class="text-indigo-600 font-bold text-sm bg-indigo-50 p-3 rounded mb-2">
+                            ip.src == 10.10.10.50 && tcp.flags.syn == 1
+                        </div>
+                        <div class="text-slate-500 text-xs">
+                            Isola as tentativas agressivas de conexão (pacotes SYN isolados) partindo diretamente do IP da máquina atacante.
+                        </div>
+                    </div>
+
+                    <div class="bg-[#020617] rounded-xl border border-white/10 font-mono text-sm shadow-xl overflow-hidden code-glow">
+                        <div class="px-6 py-3 border-b border-white/10 bg-white/5">
+                            <span class="text-slate-400 text-xs tracking-wider">Evidence Collection (Tcpdump)</span>
+                        </div>
+                        <div class="p-6 text-slate-300 space-y-4">
+                            <div class="text-slate-500"># Captura na porta de gerência escondida</div>
+                            <div class="break-all"><span class="text-tech-600 font-bold mr-2">➜</span>tcpdump -i eth0 port 40022 -w /tmp/captura.pcap</div>
+                            <div class="text-slate-500 mt-4"># Exfiltração segura da evidência para o host de análise</div>
+                            <div class="break-all"><span class="text-tech-600 font-bold mr-2">➜</span>docker cp container_web:/tmp/captura.pcap .</div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Forensics -->
-            <div class="glass lab-section animate-fade-in">
-                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 2rem;">
-                    <i data-lucide="search" style="color: #8b5cf6;"></i>
-                    <h2 style="font-size: 1.8rem;">4. Auditoria & Forense</h2>
-                </div>
-                <p style="color: var(--text-secondary); margin-bottom: 2rem;" data-i18n="lab_hosp_forensics_p">Coleta de evidências via tcpdump e análise de tráfego (PCAP) para identificar padrões de exfiltração de dados.</p>
-                
-                <div class="terminal-block">
-                    <div class="terminal-header">
-                        <div class="dot red"></div><div class="dot amber"></div><div class="dot green"></div>
-                        <span style="margin-left: 10px; font-size: 0.7rem;">Wireshark Filter Logic</span>
+            <!-- Lynis -->
+            <div>
+                <div class="flex items-center gap-3 mb-8 border-b border-slate-200 pb-4">
+                    <div class="p-2 bg-tech-100 rounded text-tech-600">
+                        <i data-lucide="file-search" class="w-6 h-6"></i>
                     </div>
-                    <code style="color: #38bdf8;">
-                        ip.src == 10.10.10.50 && tcp.flags.syn == 1
-                    </code>
+                    <h2 class="text-3xl font-bold text-tech-900">6. Auditoria Local (Lynis)</h2>
+                </div>
+                
+                <p class="text-tech-600 text-lg leading-relaxed mb-8">
+                    Scan automatizado de conformidade detectou falha grave de privacidade nos diretórios de usuários, permitindo que chaves SSH fossem lidas (como ocorreu no ataque).
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-center">
+                        <h3 class="text-rose-600 font-bold mb-2">Diagnóstico de Falha (Antes)</h3>
+                        <p class="text-slate-600 font-mono text-sm bg-slate-50 p-3 rounded border border-slate-100">
+                            drwxr-xr-x (755) /home/administracion
+                        </p>
+                        <p class="text-sm text-slate-500 mt-3">Qualquer usuário logado, incluindo o serviço web comprometido (www-data), podia ler arquivos alheios.</p>
+                    </div>
+
+                    <div class="bg-tech-900 rounded-xl border border-tech-900 font-mono text-sm shadow-xl overflow-hidden code-glow">
+                        <div class="px-6 py-3 border-b border-white/10 bg-white/5">
+                            <span class="text-slate-400 text-xs tracking-wider">Correção de Permissões (Compliance)</span>
+                        </div>
+                        <div class="p-6 text-slate-300 space-y-3">
+                            <div class="break-all"><span class="text-tech-600 font-bold mr-2">➜</span>./lynis audit system --quick</div>
+                            <div class="text-amber-400">> WARNING: Permissions of home directories</div>
+                            <div class="break-all mt-4"><span class="text-tech-600 font-bold mr-2">➜</span>sudo chmod 700 /home/administracion</div>
+                            <div class="break-all"><span class="text-tech-600 font-bold mr-2">➜</span>ls -ld /home/administracion</div>
+                            <div class="text-emerald-400 font-bold">> drwx------ (700) <span class="text-slate-500 text-xs ml-2 font-normal">// Acesso restrito exclusivo ao dono</span></div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-        </main>
+        </div>
+    </section>
 
-        <footer>
-            <p data-i18n="footer_text">© 2025 Paulo Oliveira. Especialização em Cibersegurança na UOC.</p>
-            <p class="font-mono" style="font-size: 0.7rem; margin-top: 1rem; opacity: 0.5;" data-i18n="footer_disclaimer">Propriedade Intelectual Protegida - Pesquisa Acadêmica para Demonstração</p>
-        </footer>
-    </div>
+    <!-- Resultados -->
+    <section class="bg-tech-900 text-white py-20 px-6">
+        <div class="max-w-5xl mx-auto">
+            <div class="flex items-center gap-3 mb-12 border-b border-slate-800 pb-4">
+                <div class="p-2 bg-emerald-500/20 rounded text-emerald-400">
+                    <i data-lucide="check-circle" class="w-8 h-8"></i>
+                </div>
+                <h2 class="text-4xl font-bold text-white">Resultados Obtidos</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <div class="bg-[#020617] p-8 rounded-2xl border-t-4 border-tech-500 shadow-xl">
+                    <h3 class="text-tech-400 font-bold text-xl mb-3 flex items-center gap-2"><i data-lucide="shield-check" class="w-5 h-5"></i> Defesa Ativa</h3>
+                    <p class="text-slate-400 leading-relaxed">
+                        Configuração bem-sucedida de IPS (Suricata) bloqueando ataques de DoS e Fuzzing na camada de rede, antes mesmo de atingirem a aplicação web.
+                    </p>
+                </div>
 
-    <script>
-        lucide.createIcons();
-    </script>
+                <div class="bg-[#020617] p-8 rounded-2xl border-t-4 border-blue-500 shadow-xl">
+                    <h3 class="text-blue-400 font-bold text-xl mb-3 flex items-center gap-2"><i data-lucide="lock" class="w-5 h-5"></i> Hardening & Compliance</h3>
+                    <p class="text-slate-400 leading-relaxed">
+                        Servidor atualizado via repositório seguro, SSH blindado contra força bruta e permissões de arquivos corrigidas rigorosamente conforme as políticas do Lynis.
+                    </p>
+                </div>
+            </div>
+
+            <div class="bg-black/50 rounded-xl border border-white/10 font-mono text-sm shadow-2xl overflow-hidden code-glow max-w-3xl mx-auto">
+                <div class="px-6 py-3 border-b border-white/10 bg-white/5 flex items-center gap-2">
+                    <div class="flex gap-1.5"><div class="w-3 h-3 rounded-full bg-red-500/80"></div><div class="w-3 h-3 rounded-full bg-amber-500/80"></div><div class="w-3 h-3 rounded-full bg-emerald-500/80"></div></div>
+                    <span class="text-slate-400 text-xs tracking-wider ml-2">final_report_status</span>
+                </div>
+                <div class="p-8 text-slate-300 space-y-3 text-base">
+                    <div class="break-all mb-4"><span class="text-tech-600 font-bold mr-2">➜</span>./verify_defense_matrix.sh</div>
+                    <div class="text-emerald-400">> [SURICATA] Active (Blocking Mode)</div>
+                    <div class="text-emerald-400">> [APACHE] Version: Secure (Tokens Hidden)</div>
+                    <div class="text-emerald-400">> [LYNIS INDEX] Increased to 85+</div>
+                    <div class="text-tech-400 font-bold mt-4">> [STATUS] Environment Hardened.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-white text-center border-t border-slate-200">
+        <p class="text-lg font-bold mb-2 italic text-tech-900">Cybersecurity Consultant</p>
+        <p class="text-sm text-slate-500 mb-6">Defensive Security Assessment</p>
+        <div class="flex justify-center gap-8 text-sm font-bold">
+            <a href="https://linkedin.com" class="text-tech-600 hover:underline">LinkedIn</a>
+            <a href="../index.html" class="text-tech-600 hover:underline" data-i18n="nav_back">Portal</a>
+        </div>
+    </footer>
+
+    <script>lucide.createIcons();</script>
 </body>
 </html>

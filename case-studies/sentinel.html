@@ -94,13 +94,13 @@
     <header class="tech-gradient text-white pt-32 pb-20 px-6 relative overflow-hidden">
         <div class="max-w-5xl mx-auto relative z-10 fade-in">
             <div class="flex items-center gap-4 mb-6">
-                <span class="px-3 py-1 bg-tech-600 text-[10px] font-bold uppercase tracking-widest rounded">Infrastructure & Security</span>
+                <span class="px-3 py-1 bg-tech-600 text-[10px] font-bold uppercase tracking-widest rounded" data-i18n="sn_badge">Infrastructure & Security</span>
                 <span class="text-tech-400 text-xs font-mono">Build: v2.1.0-stable</span>
             </div>
-            <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight" data-i18n="sn_title">
                 Observabilidade & <br> <span class="text-tech-600 font-mono tracking-tighter">Inteligência de Acessos</span>
             </h1>
-            <p class="text-lg text-tech-200 max-w-2xl leading-relaxed mb-8">
+            <p class="text-lg text-tech-200 max-w-2xl leading-relaxed mb-8" data-i18n="sn_hero_desc">
                 Engenharia de dados para monitoramento de sessões em tempo real, utilizando Prometheus, Grafana e um pipeline ETL assíncrono em Python.
             </p>
         </div>
@@ -117,14 +117,14 @@
     <!-- Problem / Solution -->
     <section class="py-20 px-6 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
         <div class="space-y-4">
-            <h2 class="text-xl font-bold border-l-4 border-tech-600 pl-4 uppercase tracking-wider">O Desafio</h2>
-            <p class="text-tech-600 text-sm leading-relaxed">
+            <h2 class="text-xl font-bold border-l-4 border-tech-600 pl-4 uppercase tracking-wider" data-i18n="sn_challenge_title">O Desafio</h2>
+            <p class="text-tech-600 text-sm leading-relaxed" data-i18n="sn_challenge_desc">
                 Em sistemas governamentais de larga escala, a visibilidade sobre quem acessa o quê e quando é vital. O desafio era extrair métricas de sessões de bancos de dados legados de alto tráfego sem impactar a performance do sistema principal.
             </p>
         </div>
         <div class="space-y-4">
-            <h2 class="text-xl font-bold border-l-4 border-green-500 pl-4 uppercase tracking-wider">A Engenharia</h2>
-            <p class="text-tech-600 text-sm leading-relaxed">
+            <h2 class="text-xl font-bold border-l-4 border-green-500 pl-4 uppercase tracking-wider" data-i18n="sn_eng_title">A Engenharia</h2>
+            <p class="text-tech-600 text-sm leading-relaxed" data-i18n="sn_eng_desc">
                 Implementação de um pipeline agnóstico. O sistema consome métricas via Prometheus, processa alertas críticos em Python e armazena logs de auditoria em uma base PostgreSQL dedicada, garantindo isolamento total.
             </p>
         </div>
@@ -133,31 +133,31 @@
     <!-- Tech Specs -->
     <section id="tech-specs" class="bg-tech-900 text-white py-20 px-6">
         <div class="max-w-5xl mx-auto">
-            <h2 class="text-xs uppercase tracking-[0.5em] text-tech-400 mb-12 text-center">Stack de Observabilidade</h2>
+            <h2 class="text-xs uppercase tracking-[0.5em] text-tech-400 mb-12 text-center" data-i18n="sn_stack_title">Stack de Observabilidade</h2>
 
             <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
                 <!-- Monitoramento -->
                 <div class="bg-tech-600/10 border border-tech-600/30 p-6 rounded-xl code-glow">
-                    <h3 class="text-lg font-bold mb-3 text-tech-600">Monitoring</h3>
-                    <p class="text-tech-400 text-[10px] leading-relaxed">Prometheus & Oracledb-Exporter para coleta de métricas brutas.</p>
+                    <h3 class="text-lg font-bold mb-3 text-tech-600" data-i18n="sn_stack_01_title">Monitoring</h3>
+                    <p class="text-tech-400 text-[10px] leading-relaxed" data-i18n="sn_stack_01_desc">Prometheus & Oracledb-Exporter para coleta de métricas brutas.</p>
                 </div>
 
                 <!-- Visualização -->
                 <div class="bg-tech-600/10 border border-tech-600/30 p-6 rounded-xl code-glow">
-                    <h3 class="text-lg font-bold mb-3 text-tech-600">Dashboards</h3>
-                    <p class="text-tech-400 text-[10px] leading-relaxed">Grafana para visualização analítica e alertas de segurança.</p>
+                    <h3 class="text-lg font-bold mb-3 text-tech-600" data-i18n="sn_stack_02_title">Dashboards</h3>
+                    <p class="text-tech-400 text-[10px] leading-relaxed" data-i18n="sn_stack_02_desc">Grafana para visualização analítica e alertas de segurança.</p>
                 </div>
 
                 <!-- Pipeline -->
                 <div class="bg-tech-600/10 border border-tech-600/30 p-6 rounded-xl code-glow">
-                    <h3 class="text-lg font-bold mb-3 text-tech-600">Pipeline</h3>
-                    <p class="text-tech-400 text-[10px] leading-relaxed">Python (Async) para extração e transformação de dados (ETL).</p>
+                    <h3 class="text-lg font-bold mb-3 text-tech-600" data-i18n="sn_stack_03_title">Pipeline</h3>
+                    <p class="text-tech-400 text-[10px] leading-relaxed" data-i18n="sn_stack_03_desc">Python (Async) para extração e transformation de dados (ETL).</p>
                 </div>
 
                 <!-- Infra -->
                 <div class="bg-tech-600/10 border border-tech-600/30 p-6 rounded-xl code-glow">
-                    <h3 class="text-lg font-bold mb-3 text-tech-600">Container</h3>
-                    <p class="text-tech-400 text-[10px] leading-relaxed">Docker Compose para orquestração de toda a stack.</p>
+                    <h3 class="text-lg font-bold mb-3 text-tech-600" data-i18n="sn_stack_04_title">Container</h3>
+                    <p class="text-tech-400 text-[10px] leading-relaxed" data-i18n="sn_stack_04_desc">Docker Compose para orquestração de toda a stack.</p>
                 </div>
             </div>
         </div>

@@ -14,139 +14,24 @@
     
     <style>
         /* Specific tweaks for index */
-        header {
-            padding: 4rem 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .hero {
-            padding: 6rem 0;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 4.5rem;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            max-width: 700px;
-            margin: 0 auto 2.5rem;
-        }
-
-        .section-title {
-            margin-top: 8rem;
-            margin-bottom: 3rem;
-            text-align: center;
-        }
-
-        .section-title h2 {
-            font-size: 2rem;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            color: var(--accent-blue);
-        }
-
-        .expertise-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .expertise-card {
-            padding: 2.5rem;
-            text-align: left;
-        }
-
-        footer {
-            margin-top: 10rem;
-            padding: 4rem 0;
-            border-top: 1px solid var(--surface-border);
-            text-align: center;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background: var(--accent-blue);
-            color: white;
-            text-decoration: none;
-            font-weight: 700;
-            border-radius: 8px;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .cta-button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 30px var(--accent-glow);
-        }
-
-        .lang-btn {
-            background: none;
-            border: none;
-            color: var(--text-secondary);
-            cursor: pointer;
-            padding: 0 5px;
-            transition: all 0.2s;
-        }
-
-        /* Specialized Labs Section Style */
-        .labs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
-        }
-
-        .lab-card {
-            background: rgba(15, 23, 42, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.3s ease;
-        }
-
-        .lab-card:hover {
-            border-color: var(--accent-blue);
-            background: rgba(15, 23, 42, 0.6);
-        }
-
-        .lab-thumb {
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #0f172a 0%, #020617 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .lab-thumb::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background-image: radial-gradient(circle at 50% 50%, rgba(56, 189, 248, 0.05) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .lab-thumb span {
-            font-family: 'JetBrains Mono', monospace;
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: var(--accent-blue);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            line-height: 1.4;
-            z-index: 1;
-        }
+        header { padding: 4rem 0; display: flex; justify-content: space-between; align-items: center; }
+        .hero { padding: 6rem 0; text-align: center; }
+        .hero h1 { font-size: 4.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; }
+        .hero p { font-size: 1.25rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto 2.5rem; }
+        .section-title { margin-top: 8rem; margin-bottom: 3rem; text-align: center; }
+        .section-title h2 { font-size: 2rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--accent-blue); }
+        .expertise-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+        .expertise-card { padding: 2.5rem; text-align: left; }
+        footer { margin-top: 10rem; padding: 4rem 0; border-top: 1px solid var(--surface-border); text-align: center; color: var(--text-secondary); font-size: 0.9rem; }
+        .cta-button { display: inline-block; padding: 1rem 2rem; background: var(--accent-blue); color: white; text-decoration: none; font-weight: 700; border-radius: 8px; transition: transform 0.2s, box-shadow 0.2s; }
+        .cta-button:hover { transform: scale(1.05); box-shadow: 0 0 30px var(--accent-glow); }
+        .lang-btn { background: none; border: none; color: var(--text-secondary); cursor: pointer; padding: 0 5px; transition: all 0.2s; }
+        .labs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; }
+        .lab-card { background: rgba(15, 23, 42, 0.4); border: 1px solid rgba(255, 255, 255, 0.05); transition: all 0.3s ease; }
+        .lab-card:hover { border-color: var(--accent-blue); background: rgba(15, 23, 42, 0.6); }
+        .lab-thumb { width: 100%; height: 100%; background: linear-gradient(135deg, #0f172a 0%, #020617 100%); display: flex; align-items: center; justify-content: center; padding: 2rem; text-align: center; position: relative; overflow: hidden; }
+        .lab-thumb::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(circle at 50% 50%, rgba(56, 189, 248, 0.05) 0%, transparent 70%); pointer-events: none; }
+        .lab-thumb span { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 1.2rem; color: var(--accent-blue); text-transform: uppercase; letter-spacing: 1px; line-height: 1.4; z-index: 1; }
     </style>
 </head>
 <body>
@@ -209,7 +94,7 @@
                     <div class="img-container">
                         <img src="assets/img/websecops/real-hero-v2.png" alt="WebSecOps Dashboard">
                     </div>
-                    <div class="badge" style="margin-bottom: 1rem;">Cyber Security / AI</div>
+                    <div class="badge" style="margin-bottom: 1rem;" data-i18n="badge_cyber_ai">Cyber Security / AI</div>
                     <h3 data-i18n="project_websecops_title">WebSecOps Dashboard</h3>
                     <p data-i18n="project_websecops_desc">Plataforma de inteligência que automatiza a detecção de vulnerabilidades e correlação DAST em tempo real.</p>
                     <span class="font-mono" style="color: var(--accent-blue); font-size: 0.8rem; font-weight: 700;" data-i18n="view_case">VER_ESTUDO_DE_CASO →</span>
@@ -220,7 +105,7 @@
                     <div class="img-container">
                         <img src="assets/img/sentinel/real-pipeline.png" alt="Sentinel Login Intelligence">
                     </div>
-                    <div class="badge" style="margin-bottom: 1rem;">Observability / Security</div>
+                    <div class="badge" style="margin-bottom: 1rem;" data-i18n="badge_obs_sec">Observability / Security</div>
                     <h3 data-i18n="project_sentinel_title">Sentinel Login Intelligence</h3>
                     <p data-i18n="project_sentinel_desc">Pipeline de dados de alta performance para monitoramento de sessões e auditoria em sistemas críticos.</p>
                     <span class="font-mono" style="color: var(--accent-blue); font-size: 0.8rem; font-weight: 700;" data-i18n="view_case">VER_ESTUDO_DE_CASO →</span>
@@ -231,7 +116,7 @@
                     <div class="img-container">
                         <img src="portfolio_assets/admin_dashboard.png" alt="Attiva Gym" class="obj-top">
                     </div>
-                    <div class="badge" style="margin-bottom: 1rem;">SaaS / Data Security</div>
+                    <div class="badge" style="margin-bottom: 1rem;" data-i18n="badge_saas_sec">SaaS / Data Security</div>
                     <h3 data-i18n="project_attiva_title">Attiva Gym</h3>
                     <p data-i18n="project_attiva_desc">Gestão SaaS com foco em Row Level Security (RLS) e integridade de dados via Supabase.</p>
                     <span class="font-mono" style="color: var(--accent-blue); font-size: 0.8rem; font-weight: 700;" data-i18n="view_case">VER_ESTUDO_DE_CASO →</span>
@@ -242,7 +127,7 @@
                     <div class="img-container">
                         <img src="case-studies/viralizante-real-hero.png" alt="Neon Loop Game">
                     </div>
-                    <div class="badge" style="margin-bottom: 1rem;">Game Dev / Performance</div>
+                    <div class="badge" style="margin-bottom: 1rem;" data-i18n="badge_game_perf">Game Dev / Performance</div>
                     <h3 data-i18n="project_neon_title">Neon Loop</h3>
                     <p data-i18n="project_neon_desc">Motor de alto desempenho focado em otimização de recursos e execução segura em sandbox.</p>
                     <span class="font-mono" style="color: var(--accent-blue); font-size: 0.8rem; font-weight: 700;" data-i18n="view_case">VER_ESTUDO_DE_CASO →</span>
@@ -253,7 +138,7 @@
                     <div class="img-container">
                         <img src="screenshots/index.png" alt="Vanessa Santuccione" class="obj-top">
                     </div>
-                    <div class="badge" style="margin-bottom: 1rem;">Luxury / Identity</div>
+                    <div class="badge" style="margin-bottom: 1rem;" data-i18n="badge_luxury_id">Luxury / Identity</div>
                     <h3 data-i18n="project_vanessa_title">Vanessa Santuccione</h3>
                     <p data-i18n="project_vanessa_desc">Arquitetura web otimizada com foco em proteção de identidade e performance global.</p>
                     <span class="font-mono" style="color: var(--accent-blue); font-size: 0.8rem; font-weight: 700;" data-i18n="view_case">VER_ESTUDO_DE_CASO →</span>
