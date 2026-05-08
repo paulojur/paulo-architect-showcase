@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paulo Oliveira | Cybersecurity & AI Solutions Orchestrator</title>
+    <meta name="description" content="Portfolio de Engenharia de Segurança, Arquitetura de Soluções e Pesquisa em Cibersegurança. Especialização na UOC.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/i18n.js" defer></script>
+    
+    <style>
+        /* Specific tweaks for index */
+        header {
+            padding: 4rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .hero {
+            padding: 6rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .section-title {
+            margin-top: 8rem;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--accent-blue);
+        }
+
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .expertise-card {
+            padding: 2.5rem;
+            text-align: left;
+        }
+
+        footer {
+            margin-top: 10rem;
+            padding: 4rem 0;
+            border-top: 1px solid var(--surface-border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--accent-blue);
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 8px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px var(--accent-glow);
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            padding: 0 5px;
+            transition: all 0.2s;
+        }
+
+        /* Specialized Labs Section Style */
+        .labs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .lab-card {
+            background: rgba(15, 23, 42, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .lab-card:hover {
+            border-color: var(--accent-blue);
+            background: rgba(15, 23, 42, 0.6);
+        }
+
+        .lab-thumb {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0f172a 0%, #020617 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lab-thumb::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle at 50% 50%, rgba(56, 189, 248, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .lab-thumb span {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--accent-blue);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 1.4;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header class="animate-fade-in">
+            <div class="logo">
+                <span class="font-mono" style="font-weight: 700; color: var(--accent-blue); font-size: 1.2rem;">&lt;PO /&gt;</span>
+                <span style="margin-left: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.9rem;">Paulo Oliveira</span>
+            </div>
+            <nav style="display: flex; align-items: center; gap: 20px;">
+                <div class="lang-switcher font-mono" style="font-size: 0.75rem; border-right: 1px solid var(--surface-border); padding-right: 20px;">
+                    <button onclick="setLanguage('en')" class="lang-btn" data-lang="en">EN</button>
+                    <span style="opacity: 0.3">|</span>
+                    <button onclick="setLanguage('pt')" class="lang-btn" data-lang="pt">PT</button>
+                </div>
+                <a href="https://linkedin.com" target="_blank" class="font-mono" style="color: var(--text-secondary); text-decoration: none; font-weight: 700; font-size: 0.8rem;">LINKEDIN</a>
+                <a href="https://github.com/paulojur" target="_blank" class="font-mono" style="color: var(--text-secondary); text-decoration: none; font-weight: 700; font-size: 0.8rem;">GITHUB</a>
+            </nav>
+        </header>
+
+        <section class="hero animate-fade-in" style="position: relative;">
+            <div class="hero-glow"></div>
+            <div class="badge" style="margin-bottom: 1.5rem;" data-i18n="hero_badge">Cybersecurity & AI Solutions Orchestrator</div>
+            <h1 class="text-gradient" data-i18n="hero_title">Arquitetura Resiliente,<br>Defesa Proativa</h1>
+            <p data-i18n="hero_desc">Estrategista focado em orquestração de soluções seguras, unindo pensamento sistêmico e automação inteligente para proteger ativos críticos.</p>
+            <a href="#projects" class="cta-button" data-i18n="hero_cta">Explorar Portfólio</a>
+        </section>
+
+        <section id="expertise" class="animate-fade-in">
+            <div class="section-title">
+                <h2 data-i18n="expertise_title">CORE EXPERTISE</h2>
+            </div>
+            <div class="expertise-grid">
+                <div class="glass expertise-card glass-hover">
+                    <div class="font-mono" style="color: var(--accent-blue); margin-bottom: 1rem; font-weight: 700;">RESILIENCE_01 /</div>
+                    <h3 data-i18n="expertise_01_title">Security Architecture</h3>
+                    <p data-i18n="expertise_01_desc" style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.5rem; font-weight: 500;">Design de sistemas imunes a falhas e protegidos contra vulnerabilidades críticas (OWASP/NIST).</p>
+                </div>
+                <div class="glass expertise-card glass-hover">
+                    <div class="font-mono" style="color: var(--accent-blue); margin-bottom: 1rem; font-weight: 700;">INTELLIGENCE_02 /</div>
+                    <h3 data-i18n="expertise_02_title">IA em Cyber Intelligence</h3>
+                    <p data-i18n="expertise_02_desc" style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.5rem; font-weight: 500;">Implementação de agentes de IA para monitoramento e detecção proativa de ameaças em tempo real.</p>
+                </div>
+                <div class="glass expertise-card glass-hover">
+                    <div class="font-mono" style="color: var(--accent-blue); margin-bottom: 1rem; font-weight: 700;">AUTOMATION_03 /</div>
+                    <h3 data-i18n="expertise_03_title">Security Automation (DevSecOps)</h3>
+                    <p data-i18n="expertise_03_desc" style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.5rem; font-weight: 500;">Pipelines automatizados de QA e Segurança para garantir integridade contínua do código.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="animate-fade-in">
+            <div class="section-title">
+                <h2 data-i18n="projects_title">Projetos em Destaque</h2>
+            </div>
+            <div class="grid-projects">
+                <!-- WebSecOps -->
+                <a href="case-studies/websecops.html" class="glass project-card glass-hover">
+                    <div class="img-container">
+                        <img src="assets/img/websecops/real-hero-v2.png" alt="WebSecOps Dashboard">
+                    </div>
+                    <div class="badge" style="margin-bottom: 1rem;">Cyber Security / AI</div>
+                    <h3 data-i18n="project_websecops_title">WebSecOps Dashboard</h3>
+                    <p data-i18n="project_websecops_desc">Plataforma de inteligência que automatiza a detecção de vulnerabilidades e correlação DAST em tempo real.</p>
+                    <span class="font-mono" style="color: var(--accent-blue); font-size: 0.8rem; font-weight: 700;" data-i18n="view_case">VER_ESTUDO_DE_CASO →</span>
+                </a>
+
+                <!-- Sentinel -->
+                <a href="case-studies/sentinel.html" class="glass project-card glass-hover">
+                    <div class="img-container">
+                        <img src="assets/img/sentinel/real-pipeline.png" alt="Sentinel Login Intelligence">
+                    </div>
+                    <div class="badge" style="margin-bottom: 1rem;">Observability / Security</div>
+                    <h3 data-i18n="project_sentinel_title">Sentinel Login Intelligence</h3>
+                    <p data-i18n="project_sentinel_desc">Pipeline de dados de alta performance para monitoramento de sessões e auditoria em sistemas críticos.</p>
+                    <span class="font-mono" style="color: var(--accent-blue); font-size: 0.8rem; font-weight: 700;" data-i18n="view_case">VER_ESTUDO_DE_CASO →</span>
+                </a>
+
+                <!-- Attiva Gym -->
+                <a href="case-studies/attiva-gym.html" class="glass project-card glass-hover">
+                    <div class="img-container">
+                        <img src="portfolio_assets/admin_dashboard.png" alt="Attiva Gym" class="obj-top">
+                    </div>
+                    <div class="badge" style="margin-bottom: 1rem;">SaaS / Data Security</div>
+                    <h3 data-i18n="project_attiva_title">Attiva Gym</h3>
+                    <p data-i18n="project_attiva_desc">Gestão SaaS com foco em Row Level Security (RLS) e integridade de dados via Supabase.</p>
+                    <span class="font-mono" style="color: var(--accent-blue); font-size: 0.8rem; font-weight: 700;" data-i18n="view_case">VER_ESTUDO_DE_CASO →</span>
+                </a>
+
+                <!-- Neon Loop -->
+                <a href="case-studies/viralizante.html" class="glass project-card glass-hover">
+                    <div class="img-container">
+                        <img src="case-studies/viralizante-real-hero.png" alt="Neon Loop Game">
+                    </div>
+                    <div class="badge" style="margin-bottom: 1rem;">Game Dev / Performance</div>
+                    <h3 data-i18n="project_neon_title">Neon Loop</h3>
+                    <p data-i18n="project_neon_desc">Motor de alto desempenho focado em otimização de recursos e execução segura em sandbox.</p>
+                    <span class="font-mono" style="color: var(--accent-blue); font-size: 0.8rem; font-weight: 700;" data-i18n="view_case">VER_ESTUDO_DE_CASO →</span>
+                </a>
+
+                <!-- Vanessa Santuccione -->
+                <a href="case-studies/vanessa-santuccione.html" class="glass project-card glass-hover">
+                    <div class="img-container">
+                        <img src="screenshots/index.png" alt="Vanessa Santuccione" class="obj-top">
+                    </div>
+                    <div class="badge" style="margin-bottom: 1rem;">Luxury / Identity</div>
+                    <h3 data-i18n="project_vanessa_title">Vanessa Santuccione</h3>
+                    <p data-i18n="project_vanessa_desc">Arquitetura web otimizada com foco em proteção de identidade e performance global.</p>
+                    <span class="font-mono" style="color: var(--accent-blue); font-size: 0.8rem; font-weight: 700;" data-i18n="view_case">VER_ESTUDO_DE_CASO →</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- ADVANCED LABS SECTION -->
+        <section id="labs" class="animate-fade-in">
+            <div class="section-title">
+                <h2 data-i18n="labs_title">Advanced Labs & Research</h2>
+                <p class="font-mono" style="color: var(--text-secondary); font-size: 0.8rem; margin-top: 1rem;" data-i18n="labs_desc">Explorações técnicas profundas desenvolvidas durante o Mestrado em Cibersegurança (UOC).</p>
+            </div>
+            <div class="labs-grid">
+                <!-- NAC Lab -->
+                <a href="case-studies/nac-zero-trust.html" class="glass project-card lab-card glass-hover">
+                    <div class="img-container">
+                        <div class="lab-thumb"><span>NAC & <br>ZERO TRUST</span></div>
+                    </div>
+                    <div class="badge" style="margin-bottom: 1rem; border-color: var(--accent-blue); color: var(--accent-blue);">Research / UOC</div>
+                    <h3 data-i18n="lab_nac_title">Zero Trust & NAC Architecture</h3>
+                    <p data-i18n="lab_nac_desc">Technical Paper sobre estratégias de controle de acesso, 802.1X e resposta automatizada via Radius CoA.</p>
+                    <span class="font-mono" style="color: var(--accent-blue); font-size: 0.8rem; font-weight: 700;" data-i18n="view_lab">EXPLORAR_LAB_TÉCNICO →</span>
+                </a>
+
+                <!-- Hardening Lab -->
+                <a href="case-studies/hospital-defense.html" class="glass project-card lab-card glass-hover">
+                    <div class="img-container">
+                        <div class="lab-thumb"><span>ENTERPRISE<br>HARDENING</span></div>
+                    </div>
+                    <div class="badge" style="margin-bottom: 1rem; border-color: var(--accent-blue); color: var(--accent-blue);">Blue Team / UOC</div>
+                    <h3 data-i18n="lab_hardening_title">Enterprise Hardening Lab</h3>
+                    <p data-i18n="lab_hardening_desc">Estudo de caso focado em Hardening de sistemas legados, IDS (Suricata) e auditoria forense.</p>
+                    <span class="font-mono" style="color: var(--accent-blue); font-size: 0.8rem; font-weight: 700;" data-i18n="view_lab">EXPLORAR_LAB_TÉCNICO →</span>
+                </a>
+
+                <!-- Pentest Lab -->
+                <a href="case-studies/hospital-pentest.html" class="glass project-card lab-card glass-hover">
+                    <div class="img-container">
+                        <div class="lab-thumb"><span style="color: #f43f5e;">OFFENSIVE<br>PENTEST</span></div>
+                    </div>
+                    <div class="badge" style="margin-bottom: 1rem; border-color: #f43f5e; color: #f43f5e;">OffSec / UOC</div>
+                    <h3 data-i18n="lab_pentest_title">Hospital Pentest: OffSec Lab</h3>
+                    <p data-i18n="lab_pentest_desc">Auditoria ofensiva explorando LFI, Pivoting de rede e exfiltração de dados em ambiente hospitalar simulado.</p>
+                    <span class="font-mono" style="color: var(--accent-blue); font-size: 0.8rem; font-weight: 700;" data-i18n="view_lab">EXPLORAR_LAB_TÉCNICO →</span>
+                </a>
+
+                <!-- Container Security Lab -->
+                <a href="case-studies/container-security.html" class="glass project-card lab-card glass-hover">
+                    <div class="img-container">
+                        <div class="lab-thumb"><span style="color: #10b981;">DOCKER<br>SECURITY</span></div>
+                    </div>
+                    <div class="badge" style="margin-bottom: 1rem; border-color: #10b981; color: #10b981;">DevSecOps / UOC</div>
+                    <h3 data-i18n="lab_container_title">Container Security & DevSecOps</h3>
+                    <p data-i18n="lab_container_desc">Manual técnico sobre securitização de Docker, mTLS em Proxy Reverso e escaneamento de CVEs.</p>
+                    <span class="font-mono" style="color: var(--accent-blue); font-size: 0.8rem; font-weight: 700;" data-i18n="view_lab">EXPLORAR_LAB_TÉCNICO →</span>
+                </a>
+            </div>
+        </section>
+
+        <footer>
+            <p data-i18n="footer_text">© 2025 Paulo Oliveira. Especialização em Cibersegurança na UOC.</p>
+            <p class="font-mono" style="font-size: 0.7rem; margin-top: 1rem; opacity: 0.5;" data-i18n="footer_disclaimer">Propriedade Intelectual Protegida - Projetos e Pesquisas para Demonstração</p>
+        </footer>
+    </div>
+
+</body>
+</html>

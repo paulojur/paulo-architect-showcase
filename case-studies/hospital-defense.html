@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab: Enterprise Hardening | Paulo Oliveira</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="assets/js/i18n.js" defer></script>
+
+    <style>
+        .lab-hero {
+            padding: 8rem 0 4rem;
+            text-align: center;
+            background: radial-gradient(circle at top, rgba(56, 189, 248, 0.1) 0%, transparent 70%);
+        }
+
+        .lab-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding-bottom: 10rem;
+        }
+
+        .lab-section {
+            margin-bottom: 6rem;
+            padding: 3rem;
+        }
+
+        .terminal-block {
+            background: #020617;
+            border: 1px solid var(--surface-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            margin: 1.5rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .terminal-header {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        .dot { width: 10px; height: 10px; border-radius: 50%; }
+        .red { background: #ff5f56; }
+        .amber { background: #ffbd2e; }
+        .green { background: #27c93f; }
+
+        .tech-tag {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent-blue);
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header class="animate-fade-in">
+            <a href="index.html" class="font-mono" style="text-decoration: none; color: var(--text-secondary); font-size: 0.8rem; font-weight: 700;" data-i18n="nav_back">← VOLTAR_AO_PORTFOLIO</a>
+            <div class="lang-switcher font-mono" style="font-size: 0.75rem;">
+                <button onclick="setLanguage('en')" class="lang-btn" data-lang="en">EN</button>
+                <span style="opacity: 0.3">|</span>
+                <button onclick="setLanguage('pt')" class="lang-btn" data-lang="pt">PT</button>
+            </div>
+        </header>
+
+        <section class="lab-hero animate-fade-in">
+            <div class="badge" style="margin-bottom: 1.5rem;">BLUE TEAM / HARDENING</div>
+            <h1 class="text-gradient" style="font-size: 3.5rem; margin-bottom: 1.5rem;" data-i18n="lab_hosp_title">Defesa Hospitalar: Hardening & IDS</h1>
+            <p style="max-width: 700px; margin: 0 auto; color: var(--text-secondary);" data-i18n="lab_hosp_hero_desc">Resposta técnica a incidentes: Implementação de Suricata IPS, Patch Management e Auditoria Forense em ambiente crítico.</p>
+        </section>
+
+        <main class="lab-content">
+            
+            <!-- Diagnóstico -->
+            <div class="glass lab-section animate-fade-in">
+                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 2rem;">
+                    <i data-lucide="alert-triangle" style="color: #fbbf24;"></i>
+                    <h2 style="font-size: 1.8rem;">1. Diagnóstico Inicial</h2>
+                </div>
+                <p style="color: var(--text-secondary); margin-bottom: 2rem;" data-i18n="lab_hosp_diag_p">A auditoria revelou um ambiente com softwares legados e vazamento de informações críticas via headers de servidor.</p>
+                
+                <div class="terminal-block">
+                    <div class="terminal-header">
+                        <div class="dot red"></div><div class="dot amber"></div><div class="dot green"></div>
+                        <span style="margin-left: 10px; font-size: 0.7rem;">audit@recon-node</span>
+                    </div>
+                    <code style="color: #94a3b8;">
+                        <span style="color: var(--accent-blue);">$</span> nmap -Pn -sV --script vuln -p 80 10.10.10.10<br>
+                        <span style="color: #ef4444;">> CVE-2022-31813: Detected (Apache 2.4.52)</span><br>
+                        <span style="color: var(--accent-blue);">$</span> curl -I http://intranet.hosp.local<br>
+                        <span>Server: Apache/2.4.52 (Ubuntu) PHP/8.1.2</span>
+                    </code>
+                </div>
+            </div>
+
+            <!-- Suricata -->
+            <div class="glass lab-section animate-fade-in">
+                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 2rem;">
+                    <i data-lucide="activity" style="color: var(--accent-blue);"></i>
+                    <h2 style="font-size: 1.8rem;">2. Defesa Ativa (IDS/IPS)</h2>
+                </div>
+                <p style="color: var(--text-secondary); margin-bottom: 2rem;" data-i18n="lab_hosp_suricata_p">Implementação do Suricata para detecção e bloqueio ativo de scans e ataques de negação de serviço (DoS) na camada de rede.</p>
+                
+                <div class="terminal-block">
+                    <div class="terminal-header">
+                        <div class="dot red"></div><div class="dot amber"></div><div class="dot green"></div>
+                        <span style="margin-left: 10px; font-size: 0.7rem;">/etc/suricata/rules/local.rules</span>
+                    </div>
+                    <code style="color: #94a3b8;">
+                        <span style="color: #64748b;"># Block ApacheBench DoS (Drop packet)</span><br>
+                        <span style="color: #38bdf8;">drop tcp any any -> $HOME_NET 80 (msg:"DoS Attack Blocked"; content:"ApacheBench"; sid:1000001;)</span>
+                    </code>
+                </div>
+            </div>
+
+            <!-- Hardening -->
+            <div class="glass lab-section animate-fade-in">
+                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 2rem;">
+                    <i data-lucide="shield-check" style="color: #10b981;"></i>
+                    <h2 style="font-size: 1.8rem;">3. Web & SSH Hardening</h2>
+                </div>
+                <p style="color: var(--text-secondary); margin-bottom: 2rem;" data-i18n="lab_hosp_hardening_p">Mitigação de riscos via Patch Management e ofuscação de headers. Bloqueio de root remoto e limitação de tentativas de autenticação.</p>
+                
+                <div class="terminal-block">
+                    <div class="terminal-header">
+                        <div class="dot red"></div><div class="dot amber"></div><div class="dot green"></div>
+                        <span style="margin-left: 10px; font-size: 0.7rem;">/etc/apache2/conf-enabled/security.conf</span>
+                    </div>
+                    <code style="color: #94a3b8;">
+                        ServerTokens Prod <span style="color: #64748b;"># Hide Version</span><br>
+                        ServerSignature Off <span style="color: #64748b;"># Remove Footer</span>
+                    </code>
+                </div>
+            </div>
+
+            <!-- Forensics -->
+            <div class="glass lab-section animate-fade-in">
+                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 2rem;">
+                    <i data-lucide="search" style="color: #8b5cf6;"></i>
+                    <h2 style="font-size: 1.8rem;">4. Auditoria & Forense</h2>
+                </div>
+                <p style="color: var(--text-secondary); margin-bottom: 2rem;" data-i18n="lab_hosp_forensics_p">Coleta de evidências via tcpdump e análise de tráfego (PCAP) para identificar padrões de exfiltração de dados.</p>
+                
+                <div class="terminal-block">
+                    <div class="terminal-header">
+                        <div class="dot red"></div><div class="dot amber"></div><div class="dot green"></div>
+                        <span style="margin-left: 10px; font-size: 0.7rem;">Wireshark Filter Logic</span>
+                    </div>
+                    <code style="color: #38bdf8;">
+                        ip.src == 10.10.10.50 && tcp.flags.syn == 1
+                    </code>
+                </div>
+            </div>
+
+        </main>
+
+        <footer>
+            <p data-i18n="footer_text">© 2025 Paulo Oliveira. Especialização em Cibersegurança na UOC.</p>
+            <p class="font-mono" style="font-size: 0.7rem; margin-top: 1rem; opacity: 0.5;" data-i18n="footer_disclaimer">Propriedade Intelectual Protegida - Pesquisa Acadêmica para Demonstração</p>
+        </footer>
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

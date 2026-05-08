@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study: WebSecOps | Automação de Cibersegurança</title>
+    <meta name="description"
+        content="Estudo de Caso Técnico: Integração de DAST e IA para detecção de vulnerabilidades em tempo real.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="../assets/js/i18n.js" defer></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        tech: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            600: '#dc2626',
+                            900: '#0f172a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .tech-gradient {
+            background: linear-gradient(135deg, #0f172a 0%, #450a0a 100%);
+        }
+
+        .code-glow {
+            box-shadow: 0 0 20px rgba(220, 38, 38, 0.2);
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 0 5px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+        }
+    </style>
+</head>
+
+<body class="bg-tech-50 text-tech-900 font-sans antialiased">
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full z-50 bg-tech-900/80 backdrop-blur-md border-b border-white/10 px-6 py-4">
+        <div class="max-w-5xl mx-auto flex justify-between items-center">
+            <a href="../index.html" class="text-white font-mono text-sm hover:text-tech-600 transition-colors" data-i18n="nav_back">&larr; VOLTAR_AO_PORTFOLIO</a>
+            
+            <div class="flex items-center gap-6">
+                <div class="lang-switcher font-mono" style="font-size: 0.75rem; border-right: 1px solid rgba(255,255,255,0.1); padding-right: 20px;">
+                    <button onclick="setLanguage('en')" class="lang-btn" data-lang="en">EN</button>
+                    <span style="opacity: 0.3; color: white;">|</span>
+                    <button onclick="setLanguage('pt')" class="lang-btn" data-lang="pt">PT</button>
+                </div>
+                <span class="text-tech-400 font-mono text-[10px] uppercase tracking-widest hidden md:inline">Projeto: WebSecOps Dashboard</span>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Header / Hero -->
+    <header class="tech-gradient text-white pt-32 pb-20 px-6 relative overflow-hidden">
+        <div class="max-w-5xl mx-auto relative z-10 fade-in">
+            <div class="flex items-center gap-4 mb-6">
+                <span class="px-3 py-1 bg-tech-600 text-[10px] font-bold uppercase tracking-widest rounded" data-i18n="ws_badge">Cyber Security & IA</span>
+                <span class="text-tech-400 text-xs font-mono">Build: v1.5.2-stable</span>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight" data-i18n="ws_title">
+                WebSecOps <br> <span class="text-tech-600 font-mono tracking-tighter">Automated Intelligence</span>
+            </h1>
+            <p class="text-lg text-tech-200 max-w-2xl leading-relaxed mb-8" data-i18n="ws_hero_desc">
+                Orquestração de testes de segurança DAST e correlação automática de CVEs utilizando IA para proteger ativos digitais em larga escala.
+            </p>
+        </div>
+    </header>
+
+    <!-- Visual Showcase -->
+    <section class="py-12 px-6 max-w-5xl mx-auto -mt-10 relative z-20">
+        <img src="../assets/img/websecops/real-hero-v2.png" alt="WebSecOps Interface" class="w-full rounded-2xl shadow-2xl border border-tech-900/10">
+    </section>
+
+    <!-- Problem / Solution -->
+    <section class="py-20 px-6 max-w-5xl mx-auto">
+        <div class="max-w-3xl">
+            <h2 class="text-xl font-bold border-l-4 border-tech-600 pl-4 uppercase tracking-wider mb-6" data-i18n="ws_challenge_title">O Desafio</h2>
+            <p class="text-tech-600 text-sm leading-relaxed" data-i18n="ws_challenge_desc">
+                Empresas com múltiplos domínios enfrentam dificuldades em manter uma postura de segurança contínua. O desafio era automatizar o escaneamento de vulnerabilidades e cruzar os achados com bases de CVEs conhecidas em tempo real.
+            </p>
+        </div>
+    </section>
+
+    <!-- DEEP DIVE SECTION (IMPORTANT PRINT) -->
+    <section class="py-20 bg-tech-900 text-white overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-2xl font-bold uppercase tracking-[0.3em] text-tech-600 mb-4" data-i18n="ws_deepdive_title">Deep-Dive: Correlação de Vulnerabilidades</h2>
+                <p class="text-tech-400 text-sm max-w-2xl mx-auto" data-i18n="ws_deepdive_desc">Visualização em tempo real do motor de scan identificando falhas críticas e correlacionando-as diretamente com a base de dados de CVEs.</p>
+            </div>
+            
+            <div class="relative group cursor-zoom-in">
+                <div class="absolute -inset-1 bg-gradient-to-r from-tech-600 to-transparent rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
+                <div class="relative bg-tech-900 rounded-xl overflow-hidden border border-white/10">
+                    <img src="../assets/img/websecops/real-dashboard-v2.png" alt="Real Vulnerability Scan" class="w-full h-auto transform transition duration-500 hover:scale-105">
+                </div>
+            </div>
+            
+            <div class="mt-8 flex justify-center gap-12 text-center opacity-50">
+                <div>
+                    <p class="text-xl font-bold text-tech-600 font-mono">100%</p>
+                    <p class="text-[10px] uppercase tracking-widest">Accuracy</p>
+                </div>
+                <div>
+                    <p class="text-xl font-bold text-tech-600 font-mono">CVE-DB</p>
+                    <p class="text-[10px] uppercase tracking-widest">Sync Active</p>
+                </div>
+                <div>
+                    <p class="text-xl font-bold text-tech-600 font-mono">DAST</p>
+                    <p class="text-[10px] uppercase tracking-widest">Engine Ready</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Specs -->
+    <section id="tech-specs" class="bg-white py-20 px-6 border-t border-tech-100">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-xs uppercase tracking-[0.5em] text-tech-900/30 mb-12 text-center" data-i18n="ws_stack_title">Security Stack</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Backend -->
+                <div class="bg-tech-50 border border-tech-100 p-6 rounded-xl">
+                    <h3 class="text-lg font-bold mb-3 text-tech-600" data-i18n="ws_stack_01_title">Engine</h3>
+                    <p class="text-tech-600 text-xs leading-relaxed" data-i18n="ws_stack_01_desc">FastAPI (Python) orquestrando ferramentas de DAST e integração com APIs de Threat Intelligence.</p>
+                </div>
+
+                <!-- Frontend -->
+                <div class="bg-tech-50 border border-tech-100 p-6 rounded-xl">
+                    <h3 class="text-lg font-bold mb-3 text-tech-600" data-i18n="ws_stack_02_title">Dashboard</h3>
+                    <p class="text-tech-600 text-xs leading-relaxed" data-i18n="ws_stack_02_desc">Next.js & Tailwind CSS para uma visualização rápida de ativos e status de segurança.</p>
+                </div>
+
+                <!-- Automation -->
+                <div class="bg-tech-50 border border-tech-100 p-6 rounded-xl">
+                    <h3 class="text-lg font-bold mb-3 text-tech-600" data-i18n="ws_stack_03_title">IA Integration</h3>
+                    <p class="text-tech-600 text-xs leading-relaxed" data-i18n="ws_stack_03_desc">Utilização de LLMs para explicar vulnerabilidades encontradas e sugerir correções imediatas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 bg-tech-50 text-center">
+        <p class="text-lg font-bold mb-6 italic" data-i18n="ws_stack_title">Security Architecture</p>
+        <div class="flex justify-center gap-8 text-sm font-bold">
+            <a href="https://linkedin.com" class="text-tech-600 hover:underline">LinkedIn</a>
+            <a href="../index.html" class="text-tech-600 hover:underline" data-i18n="nav_back">Portal</a>
+        </div>
+    </footer>
+
+</body>
+</html>

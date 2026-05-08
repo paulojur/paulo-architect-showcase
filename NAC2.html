@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio LinkedIn - NAC Architecture V2.1</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Configurações de Impressão -->
+    <style>
+    @page {
+        size: A5;
+        margin: 0;
+    }
+
+    @media print {
+        /* 1. Liberamos o overflow para o navegador ver as outras páginas */
+        html, body {
+            margin: 0 !important;
+            padding: 0 !important;
+            width: 148mm;
+            /* Removemos o height fixo e o overflow:hidden daqui */
+            background-color: #0f172a !important;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        /* 2. O wrapper não pode ter altura fixa nem travas */
+        .print-wrapper {
+            display: block !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            max-width: none !important;
+            width: 100% !important;
+        }
+        
+        /* 3. Cada slide força uma quebra de página */
+        .slide-container {
+            width: 148mm !important;
+            height: 210mm !important; /* Aqui o height é essencial para preencher a folha */
+            margin: 0 !important;
+            padding: 2rem !important;
+            border: none !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            display: flex !important;
+            flex-direction: column !important;
+            position: relative !important;
+            
+            /* Comandos de quebra de página */
+            break-after: page !important;
+            page-break-after: always !important;
+            break-inside: avoid !important;
+        }
+
+        .no-print {
+            display: none !important;
+        }
+
+        .bg-grid-pattern {
+            position: absolute !important;
+            inset: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            z-index: 0 !important;
+        }
+    }
+
+    /* Grid original (Web) */
+    .bg-grid-pattern {
+        background-image: linear-gradient(to right, #1e293b 1px, transparent 1px),
+                          linear-gradient(to bottom, #1e293b 1px, transparent 1px);
+        background-size: 15px 15px;
+    }
+</style>
+</head>
+<body class="font-sans text-slate-300 min-h-screen flex flex-col items-center py-10">
+
+   
+
+    <!-- Wrapper Principal -->
+    <div class="print-wrapper w-full max-w-[500px] space-y-8">
+
+        <!-- SLIDE 1: COVER -->
+        <div class="slide-container w-full aspect-[4/5] flex flex-col p-8 bg-slate-900 text-white relative overflow-hidden border border-slate-700 shadow-2xl">
+            <!-- Background: Blueprint style -->
+            <div class="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none"></div>
+            <div class="absolute top-0 right-0 w-64 h-64 bg-sky-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+            
+            <!-- Alterado: justify-center com gap fixo para não espalhar demais -->
+            <div class="relative z-10 flex flex-col h-full justify-center space-y-8">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800 border border-slate-600 mb-6">
+                        <i data-lucide="graduation-cap" class="w-4 h-4 text-sky-400"></i>
+                        <span class="text-[12px] uppercase tracking-wider font-bold text-slate-300">Mestrado UOC • Cibersegurança</span>
+                    </div>
+                    
+                    <h2 class="text-sky-500 font-mono text-md tracking-widest uppercase mb-2">Technical Paper</h2>
+                    <h1 class="text-4xl font-bold text-white leading-tight">
+                        Arquitetura<br>
+                        <span class="text-slate-400">NAC & Zero Trust</span>
+                    </h1>
+                </div>
+
+                <div class="p-5 border-l-2 border-sky-500 bg-slate-800/50 backdrop-blur-sm">
+                    <p class="text-slate-300 text-md leading-relaxed">
+                        Análise crítica sobre estratégias de controle de acesso: do inventário de ativos à resposta automatizada a incidentes.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
+                        <i data-lucide="check" class="w-3 h-3 text-emerald-500"></i> 802.1X / EAP-TLS
+                    </div>
+                    <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
+                        <i data-lucide="check" class="w-3 h-3 text-emerald-500"></i> Profiling
+                    </div>
+                    <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
+                        <i data-lucide="check" class="w-3 h-3 text-emerald-500"></i> Auto-Remediation
+                    </div>
+                    <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
+                        <i data-lucide="check" class="w-3 h-3 text-emerald-500"></i> Radius CoA
+                    </div>
+                </div>
+
+                <div class="pt-8 flex items-center gap-4 opacity-80">
+                    <i data-lucide="fingerprint" class="w-10 h-10 text-slate-700"></i>
+                    <div>
+                        <p class="text-[12px] text-slate-500 uppercase">Autor</p>
+                        <p class="text-md font-bold text-white">Paulo Ricardo de Oliveira</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 2: CONTEXT -->
+        <div class="slide-container w-full aspect-[4/5] flex flex-col p-8 bg-slate-900 text-white relative overflow-hidden border border-slate-700 shadow-2xl">
+            <div class="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none"></div>
+
+            <div class="relative z-10 flex flex-col h-full justify-center">
+                <div class="flex items-center gap-3 mb-6 border-b border-slate-800 pb-4">
+                    <div class="p-2 bg-slate-800 rounded">
+                        <i data-lucide="waypoints" class="text-sky-400 w-5 h-5"></i>
+                    </div>
+                    <h2 class="text-lg font-bold text-white">1. O Fim do Perímetro</h2>
+                </div>
+                
+                <p class="text-slate-300 mb-6 text-md">
+                    A segurança baseada em perímetro físico ("Castelo e Fosso") tornou-se obsoleta. Em um cenário híbrido, a <strong>Identidade</strong> é o novo firewall.
+                </p>
+                
+                <div class="space-y-4 font-mono text-xs">
+                    <div class="bg-slate-950 p-3 rounded border border-red-900/30 flex justify-between items-center opacity-60">
+                        <span class="text-red-400 text-[11px]">Legacy Network</span>
+                        <span class="text-slate-500 text-[11px]">Trust based on Location</span>
+                    </div>
+                    <div class="flex justify-center">
+                        <i data-lucide="arrow-down" class="w-4 h-4 text-slate-600"></i>
+                    </div>
+                    <div class="bg-slate-800 p-4 rounded border border-emerald-900/50 shadow-lg ring-1 ring-emerald-500/20">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-emerald-400 font-bold">Zero Trust Architecture</span>
+                            <i data-lucide="lock" class="w-3 h-3 text-emerald-500"></i>
+                        </div>
+                        <p class="text-slate-400 leading-relaxed mb-2">
+                            "Never Trust, Always Verify."
+                        </p>
+                        <div class="flex gap-2 mt-2">
+                            <span class="px-2 py-1 bg-slate-900 rounded text-[12px] text-slate-300">User</span>
+                            <span class="px-2 py-1 bg-slate-900 rounded text-[12px] text-slate-300">Device</span>
+                            <span class="px-2 py-1 bg-slate-900 rounded text-[12px] text-slate-300">Context</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alterado: mt-8 em vez de mt-auto para grudar no conteúdo acima -->
+                <div class="mt-8 p-3 bg-slate-800/50 rounded border-l-2 border-sky-500">
+                    <p class="text-[12px] text-slate-400">
+                        <strong>Insight:</strong> O NAC atua como o motor de decisão (Policy Decision Point) que viabiliza essa transição arquitetural.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 3: VISIBILITY -->
+        <div class="slide-container w-full aspect-[4/5] flex flex-col p-8 bg-slate-900 text-white relative overflow-hidden border border-slate-700 shadow-2xl">
+            <div class="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none"></div>
+
+            <div class="relative z-10 flex flex-col h-full justify-center">
+                <div class="flex items-center gap-3 mb-6 border-b border-slate-800 pb-4">
+                    <div class="p-2 bg-slate-800 rounded">
+                        <i data-lucide="scan-eye" class="text-emerald-400 w-5 h-5"></i>
+                    </div>
+                    <h2 class="text-lg font-bold text-white">2. Visibilidade & Profiling</h2>
+                </div>
+
+                <p class="text-slate-300 mb-8 text-md">
+                    Você não pode proteger o que não vê. O NAC moderno utiliza técnicas passivas e ativas para criar um inventário dinâmico.
+                </p>
+
+                <div class="space-y-4">
+                    <!-- Tech Card 1 -->
+                    <div class="flex gap-4 items-center p-2 rounded hover:bg-slate-800/30 transition-colors">
+                        <div class="flex-shrink-0 w-12 h-12 bg-slate-800 rounded flex items-center justify-center border border-slate-700 font-bold text-slate-500 text-xs shadow-sm">
+                            L2/L3
+                        </div>
+                        <div>
+                            <h3 class="text-white text-md font-bold">DHCP Fingerprinting</h3>
+                            <p class="text-xs text-slate-400 leading-snug">Análise da Option 55 para identificar S.O. e tipo de dispositivo sem agentes.</p>
+                        </div>
+                    </div>
+
+                    <!-- Tech Card 2 -->
+                    <div class="flex gap-4 items-center p-2 rounded hover:bg-slate-800/30 transition-colors">
+                        <div class="flex-shrink-0 w-12 h-12 bg-slate-800 rounded flex items-center justify-center border border-slate-700 font-bold text-slate-500 text-xs shadow-sm">
+                            SNMP
+                        </div>
+                        <div>
+                            <h3 class="text-white text-md font-bold">Infrastructure Query</h3>
+                            <p class="text-xs text-slate-400 leading-snug">Leitura contínua de tabelas MAC e ARP diretamente nos switches de acesso.</p>
+                        </div>
+                    </div>
+
+                    <!-- Tech Card 3 -->
+                    <div class="flex gap-4 items-center p-2 rounded hover:bg-slate-800/30 transition-colors">
+                        <div class="flex-shrink-0 w-12 h-12 bg-slate-800 rounded flex items-center justify-center border border-slate-700 font-bold text-slate-500 text-xs shadow-sm">
+                            NMAP
+                        </div>
+                        <div>
+                            <h3 class="text-white text-md font-bold">Active Scanning</h3>
+                            <p class="text-xs text-slate-400 leading-snug">Varredura granular para detecção de portas abertas e serviços vulneráveis pré-admissão.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 4: ENFORCEMENT -->
+        <div class="slide-container w-full aspect-[4/5] flex flex-col p-8 bg-slate-900 text-white relative overflow-hidden border border-slate-700 shadow-2xl">
+            <div class="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none"></div>
+
+            <div class="relative z-10 flex flex-col h-full justify-center">
+                <div class="flex items-center gap-3 mb-6 border-b border-slate-800 pb-4">
+                    <div class="p-2 bg-slate-800 rounded">
+                        <i data-lucide="shield-alert" class="text-rose-400 w-5 h-5"></i>
+                    </div>
+                    <h2 class="text-lg font-bold text-white">3. Enforcement (802.1X)</h2>
+                </div>
+
+                <p class="text-slate-300 mb-6 text-md">
+                    Controle na camada física. Bloqueio da porta do switch antes mesmo da atribuição de IP, prevenindo movimentação lateral.
+                </p>
+
+                <!-- Config Snippet -->
+                <div class="bg-slate-950 rounded border border-slate-700 font-mono text-[12px] sm:text-xs mb-8 relative group shadow-lg">
+                    <div class="absolute top-2 right-2 flex gap-1">
+                        <div class="w-2 h-2 rounded-full bg-slate-700"></div>
+                        <div class="w-2 h-2 rounded-full bg-slate-700"></div>
+                    </div>
+                    <div class="px-3 py-2 border-b border-slate-800 text-slate-500 bg-slate-900/50">switch_core_config</div>
+                    <div class="p-4 text-slate-300 space-y-2">
+                        <div class="text-slate-500">! Habilitando AAA e 802.1X</div>
+                        <div>aaa new-model</div>
+                        <div>aaa authentication dot1x default group radius</div>
+                        <div class="mt-2 text-slate-500">! Configuração de Interface</div>
+                        <div>interface GigabitEthernet1/0/1</div>
+                        <div class="pl-4 text-sky-400">authentication port-control auto</div>
+                        <div class="pl-4 text-emerald-400">dot1x pae authenticator</div>
+                        <div class="pl-4">mab <span class="text-slate-500 text-[9px]">// Fallback para impressoras</span></div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4 text-center">
+                    <div class="p-3 rounded bg-emerald-900/10 border border-emerald-900/30">
+                        <span class="block text-emerald-400 font-bold text-xs mb-1">EAP-TLS</span>
+                        <span class="text-[12px] text-slate-400 leading-tight">Certificados Digitais<br>(Padrão Ouro)</span>
+                    </div>
+                    <div class="p-3 rounded bg-slate-800 border border-slate-700 opacity-60">
+                        <span class="block text-slate-300 font-bold text-xs mb-1">MAB</span>
+                        <span class="text-[12px] text-slate-500 leading-tight">MAC Bypass<br>(Legado/IoT)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 5: RESPONSE -->
+        <div class="slide-container w-full aspect-[4/5] flex flex-col p-8 bg-slate-900 text-white relative overflow-hidden border border-slate-700 shadow-2xl">
+            <div class="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none"></div>
+
+            <div class="relative z-10 flex flex-col h-full justify-center">
+                <div class="flex items-center gap-3 mb-6 border-b border-slate-800 pb-4">
+                    <div class="p-2 bg-slate-800 rounded">
+                        <i data-lucide="zap" class="text-yellow-400 w-5 h-5"></i>
+                    </div>
+                    <h2 class="text-lg font-bold text-white">4. Resposta Automatizada</h2>
+                </div>
+
+                <p class="text-slate-300 mb-8 text-md">
+                    A integração entre EDR e NAC reduz o MTTR (Mean Time to Respond). O mecanismo chave é o <strong>Radius CoA</strong>.
+                </p>
+
+                <div class="relative space-y-2">
+                    <!-- Step 1 -->
+                    <div class="flex gap-4 pb-6 border-l border-slate-700 ml-2">
+                        <div class="absolute -left-[5px] w-3 h-3 bg-red-500 rounded-full ring-4 ring-slate-900"></div>
+                        <div class="pl-4 -mt-1.5">
+                            <h4 class="text-white text-xs font-bold uppercase tracking-wide mb-1">Detecção</h4>
+                            <p class="text-xs text-slate-400">EDR/SIEM identifica comportamento anômalo ou malware no endpoint.</p>
+                        </div>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="flex gap-4 pb-6 border-l border-slate-700 ml-2">
+                        <div class="absolute -left-[5px] w-3 h-3 bg-sky-500 rounded-full ring-4 ring-slate-900"></div>
+                        <div class="pl-4 -mt-1.5">
+                            <h4 class="text-white text-xs font-bold uppercase tracking-wide mb-1">Sinalização</h4>
+                            <p class="text-xs text-slate-400">API dispara alerta para o NAC Policy Node com ID do host.</p>
+                        </div>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="flex gap-4 ml-2">
+                        <div class="absolute -left-[5px] w-3 h-3 bg-emerald-500 rounded-full ring-4 ring-slate-900"></div>
+                        <div class="pl-4 -mt-1.5">
+                            <h4 class="text-white text-xs font-bold uppercase tracking-wide mb-1">Contenção (CoA)</h4>
+                            <p class="text-xs text-slate-400">NAC força o switch a mover a porta para <strong>VLAN de Quarentena</strong> instantaneamente.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 6: CONCLUSION -->
+        <div class="slide-container w-full aspect-[4/5] flex flex-col p-8 bg-slate-900 text-white relative overflow-hidden border border-slate-700 shadow-2xl">
+            <div class="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none"></div>
+
+            <div class="relative z-10 flex flex-col h-full justify-center space-y-8">
+                <div>
+                    <h2 class="text-2xl font-bold text-white mb-2">Conclusão Estratégica</h2>
+                    <p class="text-slate-400 text-md">
+                        Resumo executivo do estudo de caso.
+                    </p>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="bg-slate-800 p-4 rounded border-l-4 border-sky-500 shadow-lg">
+                        <h3 class="text-white font-bold text-xs mb-1 uppercase tracking-wide">Identidade > Perímetro</h3>
+                        <p class="text-xs text-slate-400">
+                            A segurança moderna não é sobre onde você está, mas quem você é e a saúde do seu dispositivo.
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-800 p-4 rounded border-l-4 border-emerald-500 shadow-lg">
+                        <h3 class="text-white font-bold text-xs mb-1 uppercase tracking-wide">Integração é Poder</h3>
+                        <p class="text-xs text-slate-400">
+                            NAC isolado é burocracia. NAC integrado com EDR/SIEM é resiliência cibernética.
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-800 p-4 rounded border-l-4 border-rose-500 shadow-lg">
+                        <h3 class="text-white font-bold text-xs mb-1 uppercase tracking-wide">Arquitetura Resiliente</h3>
+                        <p class="text-xs text-slate-400">
+                            A decisão entre Fail-Open (Disponibilidade) e Fail-Closed (Segurança) deve ser baseada em risco de negócio.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="border-t border-slate-800 pt-8 mt-4">
+                     <div class="flex items-center justify-between opacity-70">
+                         <div class="text-[12px] text-slate-500 font-mono">
+                             <p class="uppercase">Universitat Oberta de Catalunya</p>
+                             <p>Master en Ciberseguridad y Privacidad</p>
+                         </div>
+                         <i data-lucide="network" class="w-8 h-8 text-slate-700"></i>
+                     </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Inicializa os ícones Lucide -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

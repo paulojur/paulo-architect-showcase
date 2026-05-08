@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study: Sentinel Login Intelligence | Observabilidade de Segurança</title>
+    <meta name="description"
+        content="Estudo de Caso Técnico: Pipeline de extração de dados e monitoramento de sessões em tempo real.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="../assets/js/i18n.js" defer></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        tech: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            600: '#2563eb',
+                            900: '#0f172a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .tech-gradient {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+
+        .code-glow {
+            box-shadow: 0 0 20px rgba(37, 99, 235, 0.2);
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .lang-btn {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 0 5px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+        }
+    </style>
+</head>
+
+<body class="bg-tech-50 text-tech-900 font-sans antialiased">
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full z-50 bg-tech-900/80 backdrop-blur-md border-b border-white/10 px-6 py-4">
+        <div class="max-w-5xl mx-auto flex justify-between items-center">
+            <a href="../index.html" class="text-white font-mono text-sm hover:text-tech-600 transition-colors" data-i18n="nav_back">&larr; VOLTAR_AO_PORTFOLIO</a>
+            
+            <div class="flex items-center gap-6">
+                <div class="lang-switcher font-mono" style="font-size: 0.75rem; border-right: 1px solid rgba(255,255,255,0.1); padding-right: 20px;">
+                    <button onclick="setLanguage('en')" class="lang-btn" data-lang="en">EN</button>
+                    <span style="opacity: 0.3; color: white;">|</span>
+                    <button onclick="setLanguage('pt')" class="lang-btn" data-lang="pt">PT</button>
+                </div>
+                <span class="text-tech-400 font-mono text-[10px] uppercase tracking-widest hidden md:inline">Projeto: Sentinel (Monitoring)</span>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Header / Hero -->
+    <header class="tech-gradient text-white pt-32 pb-20 px-6 relative overflow-hidden">
+        <div class="max-w-5xl mx-auto relative z-10 fade-in">
+            <div class="flex items-center gap-4 mb-6">
+                <span class="px-3 py-1 bg-tech-600 text-[10px] font-bold uppercase tracking-widest rounded">Infrastructure & Security</span>
+                <span class="text-tech-400 text-xs font-mono">Build: v2.1.0-stable</span>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
+                Observabilidade & <br> <span class="text-tech-600 font-mono tracking-tighter">Inteligência de Acessos</span>
+            </h1>
+            <p class="text-lg text-tech-200 max-w-2xl leading-relaxed mb-8">
+                Engenharia de dados para monitoramento de sessões em tempo real, utilizando Prometheus, Grafana e um pipeline ETL assíncrono em Python.
+            </p>
+        </div>
+    </header>
+
+    <!-- Visual Showcase -->
+    <section class="py-12 px-6 max-w-5xl mx-auto -mt-10 relative z-20">
+        <div class="bg-tech-900 p-2 rounded-2xl shadow-2xl border border-white/10 group cursor-zoom-in overflow-hidden">
+            <img src="../assets/img/sentinel/real-pipeline.png" alt="Sentinel Pipeline Logic" class="w-full rounded-xl transform transition duration-500 hover:scale-105">
+        </div>
+        <p class="mt-4 text-xs text-tech-500 text-center italic">Execução real do pipeline: Extração via Oracledb-Exporter e processamento assíncrono.</p>
+    </section>
+
+    <!-- Problem / Solution -->
+    <section class="py-20 px-6 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div class="space-y-4">
+            <h2 class="text-xl font-bold border-l-4 border-tech-600 pl-4 uppercase tracking-wider">O Desafio</h2>
+            <p class="text-tech-600 text-sm leading-relaxed">
+                Em sistemas governamentais de larga escala, a visibilidade sobre quem acessa o quê e quando é vital. O desafio era extrair métricas de sessões de bancos de dados legados de alto tráfego sem impactar a performance do sistema principal.
+            </p>
+        </div>
+        <div class="space-y-4">
+            <h2 class="text-xl font-bold border-l-4 border-green-500 pl-4 uppercase tracking-wider">A Engenharia</h2>
+            <p class="text-tech-600 text-sm leading-relaxed">
+                Implementação de um pipeline agnóstico. O sistema consome métricas via Prometheus, processa alertas críticos em Python e armazena logs de auditoria em uma base PostgreSQL dedicada, garantindo isolamento total.
+            </p>
+        </div>
+    </section>
+
+    <!-- Tech Specs -->
+    <section id="tech-specs" class="bg-tech-900 text-white py-20 px-6">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-xs uppercase tracking-[0.5em] text-tech-400 mb-12 text-center">Stack de Observabilidade</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <!-- Monitoramento -->
+                <div class="bg-tech-600/10 border border-tech-600/30 p-6 rounded-xl code-glow">
+                    <h3 class="text-lg font-bold mb-3 text-tech-600">Monitoring</h3>
+                    <p class="text-tech-400 text-[10px] leading-relaxed">Prometheus & Oracledb-Exporter para coleta de métricas brutas.</p>
+                </div>
+
+                <!-- Visualização -->
+                <div class="bg-tech-600/10 border border-tech-600/30 p-6 rounded-xl code-glow">
+                    <h3 class="text-lg font-bold mb-3 text-tech-600">Dashboards</h3>
+                    <p class="text-tech-400 text-[10px] leading-relaxed">Grafana para visualização analítica e alertas de segurança.</p>
+                </div>
+
+                <!-- Pipeline -->
+                <div class="bg-tech-600/10 border border-tech-600/30 p-6 rounded-xl code-glow">
+                    <h3 class="text-lg font-bold mb-3 text-tech-600">Pipeline</h3>
+                    <p class="text-tech-400 text-[10px] leading-relaxed">Python (Async) para extração e transformação de dados (ETL).</p>
+                </div>
+
+                <!-- Infra -->
+                <div class="bg-tech-600/10 border border-tech-600/30 p-6 rounded-xl code-glow">
+                    <h3 class="text-lg font-bold mb-3 text-tech-600">Container</h3>
+                    <p class="text-tech-400 text-[10px] leading-relaxed">Docker Compose para orquestração de toda a stack.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 bg-tech-50 text-center">
+        <p class="text-lg font-bold mb-6 italic">Arquitetura de Dados & Segurança</p>
+        <div class="flex justify-center gap-8 text-sm font-bold">
+            <a href="https://linkedin.com" class="text-tech-600 hover:underline">LinkedIn</a>
+            <a href="../index.html" class="text-tech-600 hover:underline" data-i18n="nav_back">Portal</a>
+        </div>
+    </footer>
+
+</body>
+</html>

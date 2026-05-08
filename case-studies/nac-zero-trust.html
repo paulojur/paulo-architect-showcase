@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab: NAC & Zero Trust | Paulo Oliveira</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="../assets/js/i18n.js" defer></script>
+
+    <style>
+        .lab-hero {
+            padding: 8rem 0 4rem;
+            text-align: center;
+            background: radial-gradient(circle at top, rgba(56, 189, 248, 0.1) 0%, transparent 70%);
+        }
+        .lab-content { max-width: 900px; margin: 0 auto; padding-bottom: 10rem; }
+        .lab-section { margin-bottom: 6rem; padding: 3rem; }
+        .terminal-block {
+            background: #020617;
+            border: 1px solid var(--surface-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            margin: 1.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="animate-fade-in">
+            <a href="../index.html" class="font-mono" style="text-decoration: none; color: var(--text-secondary); font-size: 0.8rem; font-weight: 700;" data-i18n="nav_back">← VOLTAR_AO_PORTFOLIO</a>
+            <div class="lang-switcher font-mono" style="font-size: 0.75rem;">
+                <button onclick="setLanguage('en')" class="lang-btn" data-lang="en">EN</button>
+                <span style="opacity: 0.3">|</span>
+                <button onclick="setLanguage('pt')" class="lang-btn" data-lang="pt">PT</button>
+            </div>
+        </header>
+
+        <section class="lab-hero animate-fade-in">
+            <div class="badge" style="margin-bottom: 1.5rem;">NETWORK SECURITY / ZERO TRUST</div>
+            <h1 class="text-gradient" style="font-size: 3.5rem; margin-bottom: 1.5rem;" data-i18n="lab_nac_page_title">Arquitetura NAC & Zero Trust</h1>
+            <p style="max-width: 700px; margin: 0 auto; color: var(--text-secondary);" data-i18n="lab_nac_page_desc">Análise crítica sobre estratégias de controle de acesso: do inventário de ativos à resposta automatizada a incidentes.</p>
+        </section>
+
+        <main class="lab-content">
+            <div class="glass lab-section animate-fade-in">
+                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 2rem;">
+                    <i data-lucide="waypoints" style="color: var(--accent-blue);"></i>
+                    <h2 style="font-size: 1.8rem;">1. O Fim do Perímetro</h2>
+                </div>
+                <p style="color: var(--text-secondary);">A segurança baseada em perímetro físico tornou-se obsoleta. Em um cenário híbrido, a <strong>Identidade</strong> é o novo firewall. O NAC atua como o Policy Decision Point (PDP).</p>
+                
+                <div class="terminal-block">
+                    <span style="color: #64748b;">// Zero Trust Principle</span><br>
+                    <span style="color: #38bdf8;">"Never Trust, Always Verify."</span><br>
+                    <span style="color: #94a3b8;">Context: User + Device + Location</span>
+                </div>
+            </div>
+
+            <div class="glass lab-section animate-fade-in">
+                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 2rem;">
+                    <i data-lucide="shield-check" style="color: #10b981;"></i>
+                    <h2 style="font-size: 1.8rem;">2. Enforcement (802.1X)</h2>
+                </div>
+                <p style="color: var(--text-secondary);">Controle na camada física. Bloqueio da porta do switch antes mesmo da atribuição de IP, prevenindo movimentação lateral.</p>
+                
+                <div class="terminal-block">
+                    <span style="color: #64748b;">! Switch Core Config</span><br>
+                    <span style="color: #94a3b8;">aaa authentication dot1x default group radius</span><br>
+                    <span style="color: #38bdf8;">dot1x pae authenticator</span>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script>lucide.createIcons();</script>
+</body>
+</html>

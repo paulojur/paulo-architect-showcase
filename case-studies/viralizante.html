@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study: Neon Loop | AI-Driven Game Architecture</title>
+    <meta name="description"
+        content="Análise técnica do motor de jogo Viralizante: Alta performance e áudio procedural em Vanilla JS.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        tech: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            600: '#2563eb',
+                            900: '#0f172a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .tech-gradient {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+
+        .code-glow {
+            box-shadow: 0 0 20px rgba(37, 99, 235, 0.2);
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media print {
+            .no-print { display: none; }
+            body { background: white; color: black; }
+            .tech-gradient { background: #0f172a !important; -webkit-print-color-adjust: exact; }
+        }
+    </style>
+</head>
+
+<body class="bg-tech-50 text-tech-900 font-sans antialiased">
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-tech-900/10 px-6 py-4 no-print">
+        <div class="max-w-5xl mx-auto flex justify-between items-center">
+            <a href="../index.html" class="text-tech-900 font-mono text-sm font-bold hover:text-tech-600 transition-colors">&larr; VOLTAR_AO_PORTFOLIO</a>
+            <span class="text-tech-600 font-mono text-[10px] uppercase tracking-widest font-bold">Project: Viralizante</span>
+        </div>
+    </nav>
+
+    <!-- Header / Hero -->
+    <header class="tech-gradient text-white pt-32 pb-20 px-6 relative overflow-hidden">
+        <div class="max-w-5xl mx-auto relative z-10 fade-in">
+            <div class="flex items-center gap-4 mb-6">
+                <span class="px-3 py-1 bg-tech-600 text-[10px] font-bold uppercase tracking-widest rounded">Game Architecture</span>
+                <span class="text-tech-400 text-xs font-mono">Performance: 60FPS / Stable</span>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
+                Neon Loop: Orquestração de Performance em Game Loops
+            </h1>
+            <p class="text-lg text-tech-200 max-w-2xl leading-relaxed mb-8">
+                Desenvolvimento de um motor de jogo minimalista em Vanilla JS, focado em síntese de áudio procedural e renderização de alta densidade de partículas.
+            </p>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12 border-t border-white/10 pt-8">
+                <div>
+                    <p class="text-[10px] uppercase tracking-widest text-tech-400">Bundle Size</p>
+                    <p class="text-2xl font-bold font-mono">&lt; 45KB</p>
+                </div>
+                <div>
+                    <p class="text-[10px] uppercase tracking-widest text-tech-400">Frame Rate</p>
+                    <p class="text-2xl font-bold font-mono">60 FPS</p>
+                </div>
+                <div>
+                    <p class="text-[10px] uppercase tracking-widest text-tech-400">Audio Latency</p>
+                    <p class="text-2xl font-bold font-mono">&lt; 10ms</p>
+                </div>
+                <div>
+                    <p class="text-[10px] uppercase tracking-widest text-tech-400">Assets</p>
+                    <p class="text-2xl font-bold font-mono">0 IMG</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Visual Showcase -->
+    <section class="py-12 px-6 max-w-5xl mx-auto -mt-10 relative z-20">
+        <img src="viralizante-real-hero.png" alt="Neon Loop Game Hero" class="w-full rounded-2xl shadow-2xl border border-tech-900/10">
+    </section>
+
+    <!-- Problem / Solution -->
+    <section id="challenge" class="py-20 px-6 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div class="space-y-4">
+            <h2 class="text-xl font-bold border-l-4 border-tech-600 pl-4 uppercase tracking-wider">O Desafio</h2>
+            <p class="text-tech-600 text-sm leading-relaxed">
+                O projeto <strong>Neon Loop</strong> nasceu da necessidade de criar uma experiência imersiva e visualmente impactante que fosse carregada instantaneamente em qualquer dispositivo. <br><br>
+                O desafio técnico consistiu em construir toda a estética visual e sonora através de código puro, utilizando a <strong>Canvas API</strong> para renderização neon e a <strong>Web Audio API</strong> para síntese de som em tempo real.
+            </p>
+        </div>
+        <div style="position: relative;">
+            <img src="viralizante-real-gameplay.png" alt="Gameplay View" class="w-full rounded-2xl shadow-lg border border-tech-900/10" style="height: 350px;">
+            <div class="font-mono absolute bottom-5 left-5 text-[10px] text-tech-600 bg-black/70 px-2 py-1">LIVE_RENDER_VIEW</div>
+        </div>
+    </section>
+
+    <!-- Tech Stack -->
+    <section id="tech-specs" class="bg-tech-900 text-white py-20 px-6">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-xs uppercase tracking-[0.5em] text-tech-400 mb-12 text-center">Engineering Core</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-tech-600/10 border border-tech-600/30 p-6 rounded-xl code-glow">
+                    <h3 class="text-lg font-bold mb-3 text-tech-600">Particle Engine</h3>
+                    <p class="text-tech-400 text-xs leading-relaxed">
+                        Sistema de partículas de alta densidade com interpolação de cores e fade-out dinâmico para simulação de explosões neon.
+                    </p>
+                </div>
+                <div class="bg-tech-600/10 border border-tech-600/30 p-6 rounded-xl code-glow">
+                    <h3 class="text-lg font-bold mb-3 text-tech-600">Procedural Audio</h3>
+                    <p class="text-tech-400 text-xs leading-relaxed">
+                        Síntese matemática de ondas sonoras (osciladores) para criar melodias e efeitos de impacto em tempo real.
+                    </p>
+                </div>
+                <div class="bg-tech-600/10 border border-tech-600/30 p-6 rounded-xl code-glow">
+                    <h3 class="text-lg font-bold mb-3 text-tech-600">Reactive Visuals</h3>
+                    <p class="text-tech-400 text-xs leading-relaxed">
+                        Uso de matrizes de transformação e filtros neon via código para criar grids dinâmicos que reagem ao gameplay.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="py-20 px-6 max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div class="bg-white p-4 border border-tech-200 rounded-lg shadow-sm">
+                <img src="viralizante-gameplay.png" alt="Gameplay" class="w-full rounded mb-4">
+                <h4 class="text-sm font-bold uppercase tracking-widest text-tech-600 mb-2">Live Render View</h4>
+                <p class="text-xs text-tech-500">Renderização em tempo real sem uso de bibliotecas externas.</p>
+            </div>
+            <div class="bg-white p-4 border border-tech-200 rounded-lg shadow-sm">
+                <img src="viralizante-real-ui.png" alt="Audio Viz" class="w-full rounded mb-4" style="height: 150px; object-fit: cover;">
+                <h4 class="text-sm font-bold uppercase tracking-widest text-tech-600 mb-2">Synthesis Logic</h4>
+                <p class="text-xs text-tech-500">Visualização da lógica de síntese FM para efeitos de impacto.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 bg-tech-50 text-center no-print">
+        <p class="text-lg font-bold mb-6">Arquiteto de Soluções: Paulo Oliveira</p>
+        <div class="flex justify-center gap-8 text-sm font-bold">
+            <a href="https://linkedin.com" class="text-tech-600 hover:underline">LinkedIn</a>
+            <a href="../index.html" class="text-tech-600 hover:underline">Portal Showcase</a>
+        </div>
+    </footer>
+
+</body>
+
+</html>

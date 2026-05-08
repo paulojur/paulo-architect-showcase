@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study: Attiva Gym | SaaS Fitness Architecture</title>
+    <meta name="description"
+        content="Technical Case Study: AI-orchestrated development of a smart fitness management ecosystem.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        tech: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            600: '#3b82f6',
+                            900: '#0f172a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .tech-gradient {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+
+        .code-glow {
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media print {
+            .no-print { display: none; }
+            body { background: white; color: black; }
+            .tech-gradient { background: #0f172a !important; -webkit-print-color-adjust: exact; }
+        }
+    </style>
+</head>
+
+<body class="bg-tech-50 text-tech-900 font-sans antialiased">
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full z-50 bg-tech-900/80 backdrop-blur-md border-b border-white/10 px-6 py-4 no-print">
+        <div class="max-w-5xl mx-auto flex justify-between items-center">
+            <a href="../index.html" class="text-white font-mono text-sm hover:text-tech-600 transition-colors">&larr; Voltar ao Portal</a>
+            <span class="text-tech-400 font-mono text-[10px] uppercase tracking-widest">Project: Attiva Gym</span>
+        </div>
+    </nav>
+
+    <!-- Header / Hero -->
+    <header class="tech-gradient text-white pt-32 pb-20 px-6 relative overflow-hidden">
+        <div class="max-w-5xl mx-auto relative z-10 fade-in">
+            <div class="flex items-center gap-4 mb-6">
+                <span class="px-3 py-1 bg-tech-600 text-[10px] font-bold uppercase tracking-widest rounded">SaaS Architecture</span>
+                <span class="text-tech-400 text-xs font-mono">Status: Production / Stable</span>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
+                Ecossistema Inteligente <br> <span class="text-tech-600 font-mono tracking-tighter">Gestão Fitness</span>
+            </h1>
+            <p class="text-lg text-tech-200 max-w-2xl leading-relaxed mb-8">
+                Como arquitetei uma plataforma SaaS de alta performance unindo eficiência administrativa, gamificação e segurança rigorosa de dados via Supabase.
+            </p>
+        </div>
+    </header>
+
+    <!-- Problem / Solution -->
+    <section class="py-20 px-6 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div class="space-y-4">
+            <h2 class="text-xl font-bold border-l-4 border-tech-600 pl-4 uppercase tracking-wider">O Desafio</h2>
+            <p class="text-tech-600 text-sm leading-relaxed">
+                Transformar a operação manual de uma academia de treinamento funcional em um fluxo digital automatizado. O foco era retenção de alunos seniores e controle total de auditoria administrativa.
+            </p>
+        </div>
+        <div class="space-y-4">
+            <h2 class="text-xl font-bold border-l-4 border-green-500 pl-4 uppercase tracking-wider">A Engenharia</h2>
+            <p class="text-tech-600 text-sm leading-relaxed">
+                Desenvolvimento dirigido por IA (AI-Driven Development). Implementação de arquitetura baseada em Row Level Security (RLS) para proteção de dados sensíveis e orquestração de lógica complexa de gamificação.
+            </p>
+        </div>
+    </section>
+
+    <!-- Tech Stack -->
+    <section id="tech-specs" class="bg-tech-900 text-white py-20 px-6">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-xs uppercase tracking-[0.5em] text-tech-400 mb-12 text-center">Infraestrutura Técnica</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-tech-600/10 border border-tech-600/30 p-6 rounded-xl code-glow">
+                    <h3 class="text-lg font-bold mb-3 text-tech-600">Database & Security</h3>
+                    <p class="text-tech-400 text-xs leading-relaxed">
+                        PostgreSQL (Supabase) com políticas granulares de RLS, garantindo que cada usuário acesse apenas seus próprios dados.
+                    </p>
+                </div>
+                <div class="bg-tech-600/10 border border-tech-600/30 p-6 rounded-xl code-glow">
+                    <h3 class="text-lg font-bold mb-3 text-tech-600">Business Logic</h3>
+                    <p class="text-tech-400 text-xs leading-relaxed">
+                        Sistema de Log Global para rastreabilidade de auditoria e orquestração de agentes de IA para processamento de métricas.
+                    </p>
+                </div>
+                <div class="bg-tech-600/10 border border-tech-600/30 p-6 rounded-xl code-glow">
+                    <h3 class="text-lg font-bold mb-3 text-tech-600">Frontend Engine</h3>
+                    <p class="text-tech-400 text-xs leading-relaxed">
+                        React + TypeScript com deploy contínuo via Netlify, focado em UX intuitiva para o público sênior.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Features -->
+    <section class="py-20 px-6 max-w-5xl mx-auto">
+        <h2 class="text-2xl font-bold mb-12 text-center">Destaques da Solução</h2>
+        <div class="space-y-12">
+            <div class="flex flex-col md:flex-row gap-8 items-center">
+                <div class="flex-1">
+                    <h3 class="text-xl font-bold mb-4 text-tech-600">1. Painel Administrativo (BI)</h3>
+                    <p class="text-sm text-tech-600 leading-relaxed">
+                        Controle de turmas em tempo real, alertas de manutenção e logs de auditoria. Tudo desenhado para minimizar o erro humano e maximizar a eficiência operacional.
+                    </p>
+                </div>
+                <div class="flex-1 bg-tech-100 p-8 rounded-lg border border-tech-200 font-mono text-[10px] text-tech-900">
+                    // Architecture Note: Audit Trail Implementation
+                    CREATE POLICY "Admin audit logs visibility" 
+                    ON audit_logs FOR SELECT 
+                    USING (auth.jwt() ->> 'role' = 'admin');
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row-reverse gap-8 items-center">
+                <div class="flex-1">
+                    <h3 class="text-xl font-bold mb-4 text-tech-600">2. Ecossistema AttivaCoins</h3>
+                    <p class="text-sm text-tech-600 leading-relaxed">
+                        Sistema de gamificação onde alunos ganham moedas virtuais por frequência e feedback, trocáveis por recompensas. Engajamento impulsionado por lógica comportamental.
+                    </p>
+                </div>
+                <div class="flex-1 bg-tech-100 p-8 rounded-lg border border-tech-200">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="font-bold text-tech-600 text-xs">REWARD LOGIC</span>
+                        <span class="text-[10px] bg-green-500 text-white px-2 py-1 rounded">ACTIVE</span>
+                    </div>
+                    <div class="h-2 bg-tech-200 rounded-full overflow-hidden">
+                        <div class="h-full bg-tech-600" style="width: 75%"></div>
+                    </div>
+                    <p class="text-[9px] mt-2 text-tech-500 italic">"Frequency correlation identified. Bonus applied to user session."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Visual Showcase -->
+    <section class="py-20 px-6 max-w-6xl mx-auto">
+        <h2 class="text-2xl font-bold mb-12 text-center">Execução Visual & Interface</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <!-- Admin -->
+            <div class="bg-white p-4 border border-tech-200 rounded-lg shadow-sm">
+                <div class="bg-tech-100 rounded overflow-hidden mb-4">
+                    <img src="../portfolio_assets/admin_dashboard.png" alt="Admin Dashboard" class="w-full h-auto">
+                </div>
+                <h4 class="text-sm font-bold uppercase tracking-widest text-tech-600 mb-2">Visão Administrativa</h4>
+                <p class="text-xs text-tech-500 leading-relaxed">Gestão de turmas, agendamentos e métricas de BI em tempo real.</p>
+            </div>
+
+            <!-- Aluno -->
+            <div class="bg-white p-4 border border-tech-200 rounded-lg shadow-sm">
+                <div class="bg-tech-100 rounded overflow-hidden mb-4">
+                    <img src="../portfolio_assets/aluno_home.png" alt="Home do Aluno" class="w-full h-auto">
+                </div>
+                <h4 class="text-sm font-bold uppercase tracking-widest text-tech-600 mb-2">Portal do Aluno</h4>
+                <p class="text-xs text-tech-500 leading-relaxed">Interface intuitiva para check-in, treinos e acompanhamento de metas.</p>
+            </div>
+
+            <!-- Logs -->
+            <div class="bg-white p-4 border border-tech-200 rounded-lg shadow-sm">
+                <div class="bg-tech-100 rounded overflow-hidden mb-4">
+                    <img src="../portfolio_assets/admin_logs.png" alt="Logs e Atividade" class="w-full h-auto">
+                </div>
+                <h4 class="text-sm font-bold uppercase tracking-widest text-tech-600 mb-2">Traceabilidade & Logs</h4>
+                <p class="text-xs text-tech-500 leading-relaxed">Rastreio completo de ações administrativas para segurança e auditoria.</p>
+            </div>
+
+            <!-- Carteira -->
+            <div class="bg-white p-4 border border-tech-200 rounded-lg shadow-sm">
+                <div class="bg-tech-100 rounded overflow-hidden mb-4 flex justify-center">
+                    <img src="../portfolio_assets/aluno_carteira.png" alt="Carteira AttivaCoins" class="w-full h-auto">
+                </div>
+                <h4 class="text-sm font-bold uppercase tracking-widest text-tech-600 mb-2">Gamificação (AttivaCoins)</h4>
+                <p class="text-xs text-tech-500 leading-relaxed">Sistema de recompensas e fidelização integrado ao Portal do Aluno.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results -->
+
+    <section class="py-20 tech-gradient text-white">
+        <div class="max-w-4xl mx-auto text-center px-6">
+            <h2 class="text-2xl font-bold mb-8 italic">Impacto do Projeto</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div>
+                    <p class="text-3xl font-extrabold text-tech-600">85%</p>
+                    <p class="text-[10px] uppercase tracking-widest text-tech-400">Automação de Processos</p>
+                </div>
+                <div>
+                    <p class="text-3xl font-extrabold text-tech-600">Zero</p>
+                    <p class="text-[10px] uppercase tracking-widest text-tech-400">Data Breaches (RLS Enforced)</p>
+                </div>
+                <div>
+                    <p class="text-3xl font-extrabold text-tech-600">+40%</p>
+                    <p class="text-[10px] uppercase tracking-widest text-tech-400">Retenção de Alunos</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 bg-tech-50 text-center no-print">
+        <p class="text-lg font-bold mb-6">Arquiteto de Soluções: Paulo Oliveira</p>
+        <div class="flex justify-center gap-8 text-sm font-bold">
+            <a href="https://linkedin.com" class="text-tech-600 hover:underline">LinkedIn</a>
+            <a href="../index.html" class="text-tech-600 hover:underline">Portal Showcase</a>
+        </div>
+    </footer>
+
+</body>
+
+</html>

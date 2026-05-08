@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio LinkedIn - Container Security</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Configurações de Impressão -->
+    <style>
+        body {
+            background-color: #020617; /* slate-950 */
+        }
+        
+        .slide-container {
+            width: 100%;
+            max-width: 800px; 
+            aspect-ratio: 1 / 1.414; 
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+            background-color: #0f172a; 
+            border: 1px solid #334155;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .bg-grid-pattern {
+            background-image: linear-gradient(to right, #1e293b 1px, transparent 1px),
+                              linear-gradient(to bottom, #1e293b 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        @media print {
+            @page {
+                size: A4 portrait; 
+                margin: 0; 
+            }
+            
+            body {
+                background-color: #0f172a !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                margin: 0;
+                padding: 0;
+                display: block;
+            }
+
+            .no-print {
+                display: none !important;
+            }
+
+            .print-wrapper {
+                max-width: 100% !important;
+                width: 100% !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            .slide-container {
+                width: 210mm !important;
+                height: 296mm !important; 
+                max-width: none !important;
+                margin: 0 !important;
+                border: none !important;
+                box-shadow: none !important;
+                border-radius: 0 !important;
+                break-after: page;
+                page-break-after: always;
+                overflow: hidden !important;
+            }
+            
+            .slide-container:last-child {
+                break-after: auto;
+                page-break-after: auto;
+            }
+        }
+    </style>
+</head>
+<body class="font-sans text-slate-300 min-h-screen flex flex-col items-center py-10">
+
+    <div class="no-print text-center mb-8 space-y-2">
+        <h1 class="text-3xl font-bold text-white">Layout: Container Security & DevSecOps</h1>
+        <p class="text-slate-400 text-base">Escala máxima para LinkedIn. Tema "DevSecOps" (Esmeralda e Azul).</p>
+        <div class="bg-slate-800 p-4 rounded text-left inline-block mt-4 border border-slate-700">
+            <p class="text-sm text-emerald-400 font-bold mb-2">⚠️ DICA DE IMPRESSÃO PARA LINKEDIN:</p>
+            <ul class="text-sm text-slate-300 list-disc pl-5 space-y-1">
+                <li>Aperte Ctrl+P e escolha <strong>Salvar como PDF</strong>.</li>
+                <li>O código força a proporção A4. Não precisa ajustar margens.</li>
+                <li>Certifique-se de que "Gráficos de segundo plano" está ativado.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Wrapper Principal -->
+    <div class="print-wrapper w-full max-w-[800px] space-y-12">
+
+        <!-- SLIDE 1: COVER -->
+        <div class="slide-container flex flex-col p-12 text-white">
+            <div class="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none"></div>
+            <!-- Tons Esmeralda/Azul -->
+            <div class="absolute top-0 right-0 w-96 h-96 bg-emerald-600/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+            <div class="absolute bottom-0 left-0 w-96 h-96 bg-sky-600/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
+            
+            <div class="relative z-10 flex flex-col h-full justify-between">
+                <div>
+                    <div class="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-slate-800 border border-slate-600 mb-8 shadow-lg">
+                        <i data-lucide="graduation-cap" class="w-5 h-5 text-emerald-400"></i>
+                        <span class="text-sm uppercase tracking-widest font-bold text-slate-300">Mestrado UOC • Cibersegurança</span>
+                    </div>
+                    
+                    <h2 class="text-emerald-400 font-mono text-xl tracking-widest uppercase mb-4">Field Manual: Prática 1</h2>
+                    <h1 class="text-6xl font-extrabold text-white leading-tight">
+                        Container Security<br>
+                        <span class="text-slate-400">& Hardening</span>
+                    </h1>
+                </div>
+
+                <div class="p-8 border-l-4 border-emerald-500 bg-slate-800 shadow-2xl rounded-r-xl mt-8">
+                    <p class="text-slate-200 text-xl leading-relaxed font-medium">
+                        Securitização <em>from scratch</em> de uma infraestrutura baseada em Docker. Foco em imagens seguras, isolamento de recursos e controle de acesso rigoroso (mTLS).
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 gap-5 pl-2 mt-8">
+                    <div class="flex items-center gap-4 text-xl font-mono text-slate-300">
+                        <div class="p-2 bg-slate-800 rounded-lg"><i data-lucide="box" class="w-6 h-6 text-sky-400"></i></div>
+                        Construção Segura (Dockerfile)
+                    </div>
+                    <div class="flex items-center gap-4 text-xl font-mono text-slate-300">
+                        <div class="p-2 bg-slate-800 rounded-lg"><i data-lucide="lock" class="w-6 h-6 text-sky-400"></i></div>
+                        Reverse Proxy com mTLS
+                    </div>
+                    <div class="flex items-center gap-4 text-xl font-mono text-slate-300">
+                        <div class="p-2 bg-slate-800 rounded-lg"><i data-lucide="shield-alert" class="w-6 h-6 text-sky-400"></i></div>
+                        Hardening de Privilégios (Compose)
+                    </div>
+                </div>
+
+                <div class="pt-6 border-t border-slate-800 flex items-center gap-5 mt-auto">
+                    <div class="p-3 bg-slate-800 rounded-full border border-slate-700">
+                        <i data-lucide="user" class="w-8 h-8 text-slate-400"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm text-slate-500 uppercase tracking-widest font-bold mb-1">Elaborado por</p>
+                        <p class="text-2xl font-bold text-white">Paulo Ricardo de Oliveira</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 2: BASE IMAGE -->
+        <div class="slide-container flex flex-col p-12 text-white">
+            <div class="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none"></div>
+
+            <div class="relative z-10 flex flex-col h-full">
+                <div class="flex items-center gap-4 mb-8 border-b border-slate-800 pb-5">
+                    <div class="p-3 bg-slate-800 rounded-xl shadow-inner">
+                        <i data-lucide="file-json" class="text-emerald-400 w-8 h-8"></i>
+                    </div>
+                    <h2 class="text-4xl font-bold text-white">1. A Imagem Base</h2>
+                </div>
+                
+                <p class="text-slate-300 mb-8 text-xl leading-relaxed">
+                    Evitando caixas-pretas de imagens pré-configuradas: o servidor web (Nginx) foi construído a partir de um S.O. limpo (<code>ubuntu:latest</code>).
+                </p>
+                
+                <div class="flex-grow flex flex-col justify-center space-y-6">
+                    
+                    <div class="bg-slate-800 p-8 rounded-2xl border border-slate-700 shadow-xl">
+                        <div class="flex items-center gap-4 mb-4 border-b border-slate-700 pb-4">
+                            <i data-lucide="user-minus" class="text-amber-400 w-8 h-8"></i>
+                            <h3 class="text-white font-bold text-2xl">Setup: Least Privilege</h3>
+                        </div>
+                        <p class="text-lg text-slate-300 leading-relaxed">
+                            Executar containers constantemente com <code>sudo</code> é um risco. Adicionar o usuário ao grupo <code>docker</code> confere acesso ao socket do daemon sem expor o sistema inteiro ao nível root.
+                        </p>
+                    </div>
+
+                    <!-- Terminal -->
+                    <div class="bg-slate-950 rounded-2xl border border-slate-700 font-mono text-lg mt-4 relative shadow-2xl overflow-hidden flex flex-col">
+                        <div class="px-6 py-4 border-b border-slate-800 bg-slate-900 flex items-center justify-between">
+                            <span class="text-slate-400 text-sm tracking-wider">Dockerfile (Hardened)</span>
+                        </div>
+                        <div class="p-8 text-slate-300 space-y-4">
+                            <div class="text-emerald-400 font-bold">FROM ubuntu:latest</div>
+                            <div class="text-slate-500 italic mt-4"># Evita travar automações de CI/CD aguardando input humano</div>
+                            <div class="text-sky-300">ENV DEBIAN_FRONTEND=noninteractive</div>
+                            <div class="mt-4"><span class="text-white">RUN</span> apt-get update && apt-get install -y nginx</div>
+                            <div class="mt-4"><span class="text-white">EXPOSE</span> 80</div>
+                            <div class="text-slate-500 italic mt-4"># Força o Nginx no foreground (Evita que o container morra)</div>
+                            <div class="text-sky-300">CMD ["nginx", "-g", "daemon off;"]</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 3: NETWORK & LIMITS -->
+        <div class="slide-container flex flex-col p-12 text-white">
+            <div class="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none"></div>
+
+            <div class="relative z-10 flex flex-col h-full">
+                <div class="flex items-center gap-4 mb-8 border-b border-slate-800 pb-5">
+                    <div class="p-3 bg-slate-800 rounded-xl shadow-inner">
+                        <i data-lucide="network" class="text-sky-400 w-8 h-8"></i>
+                    </div>
+                    <h2 class="text-4xl font-bold text-white">2. Isolamento & Limites</h2>
+                </div>
+
+                <p class="text-slate-300 mb-8 text-xl leading-relaxed">
+                    Subindo a aplicação isolada da rede principal e protegida estruturalmente contra ataques de exaustão de recursos (DoS).
+                </p>
+
+                <div class="flex-grow flex flex-col justify-center space-y-6">
+                    <!-- Terminal -->
+                    <div class="bg-slate-950 rounded-2xl border border-slate-700 font-mono text-lg relative shadow-2xl overflow-hidden flex flex-col">
+                        <div class="px-6 py-4 border-b border-slate-800 bg-slate-900 flex items-center gap-3">
+                            <div class="flex gap-2">
+                                <div class="w-3 h-3 rounded-full bg-slate-600"></div>
+                                <div class="w-3 h-3 rounded-full bg-slate-600"></div>
+                                <div class="w-3 h-3 rounded-full bg-slate-600"></div>
+                            </div>
+                            <span class="text-slate-400 text-sm tracking-wider">Deployment Controls</span>
+                        </div>
+                        <div class="p-8 text-slate-300 space-y-5">
+                            <div class="text-slate-500 italic"># 1. Rede Customizada (Segurança por Isolamento)</div>
+                            <div class="break-all"><span class="text-emerald-400 mr-2">$</span> docker network create practica1-net</div>
+                            
+                            <div class="text-slate-500 italic mt-8"># 2. Deploy com Limitações Estritas (Resource Limits)</div>
+                            <div class="break-all text-sky-200">
+                                <span class="text-emerald-400 mr-2">$</span> docker run -d --name webapp-nginx \<br>
+                                &nbsp;&nbsp;--network practica1-net \<br>
+                                &nbsp;&nbsp;<span class="text-rose-400 font-bold">--cpus="0.5" -m="1g"</span> \<br>
+                                &nbsp;&nbsp;-p 8080:80 practica-1-nginx
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 bg-slate-800 p-6 rounded-xl border-l-4 border-sky-500 shadow-lg flex items-start gap-4">
+                        <i data-lucide="cpu" class="w-8 h-8 text-sky-400 mt-1"></i>
+                        <div>
+                            <p class="text-xl text-white font-bold mb-2">Impacto das Restrições</p>
+                            <p class="text-lg text-slate-300">
+                                Limite de 50% de CPU e 1GB de RAM. Se a aplicação sofrer um vazamento de memória ou ataque DDoS, ela não derrubará o servidor físico (Host).
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 4: mTLS -->
+        <div class="slide-container flex flex-col p-12 text-white">
+            <div class="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none"></div>
+
+            <div class="relative z-10 flex flex-col h-full">
+                <div class="flex items-center gap-4 mb-8 border-b border-slate-800 pb-5">
+                    <div class="p-3 bg-slate-800 rounded-xl shadow-inner">
+                        <i data-lucide="shield" class="text-emerald-400 w-8 h-8"></i>
+                    </div>
+                    <h2 class="text-4xl font-bold text-white">3. A Muralha (mTLS)</h2>
+                </div>
+
+                <p class="text-slate-300 mb-8 text-xl leading-relaxed">
+                    Criação de um Proxy Reverso que só aceita conexões de clientes que possuam um certificado criptográfico válido (Mutual TLS).
+                </p>
+
+                <div class="flex-grow flex flex-col justify-center space-y-8">
+                    <div class="grid grid-cols-1 gap-4">
+                        <div class="bg-slate-900 p-6 rounded-2xl border border-slate-700 shadow-lg">
+                            <span class="text-emerald-400 font-bold text-xl block mb-2">1. PKI via OpenSSL</span>
+                            <span class="text-lg text-slate-300">Geração de Autoridade Certificadora (Root CA) e assinatura de certificados em pacote <code>.p12</code> para o navegador do cliente.</span>
+                        </div>
+                    </div>
+
+                    <!-- Terminal -->
+                    <div class="bg-slate-950 rounded-2xl border border-slate-700 font-mono text-lg relative shadow-2xl overflow-hidden flex flex-col">
+                        <div class="px-6 py-4 border-b border-slate-800 bg-slate-900 flex items-center gap-3">
+                            <span class="text-slate-400 text-sm tracking-wider">nginx.conf (Proxy Settings)</span>
+                        </div>
+                        <div class="p-8 text-slate-300 space-y-4">
+                            <div class="text-slate-500 italic"># Hardening de Protocolos (Desabilita SSLv3, TLS 1.0/1.1)</div>
+                            <div class="text-sky-300">ssl_protocols TLSv1.2 TLSv1.3;</div>
+                            
+                            <div class="text-slate-500 italic mt-6"># O coração do mTLS: Exigência de Validação</div>
+                            <div class="text-sky-300">ssl_client_certificate /etc/nginx/ssl/ca.crt;</div>
+                            <div class="text-emerald-400 font-bold">ssl_verify_client on;</div>
+
+                            <div class="text-slate-500 italic mt-6"># Redirecionamento Interno Seguro</div>
+                            <div class="text-sky-300">proxy_pass http://webapp-nginx:80;</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 5: COMPOSE HARDENING -->
+        <div class="slide-container flex flex-col p-12 text-white">
+            <div class="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none"></div>
+
+            <div class="relative z-10 flex flex-col h-full">
+                <div class="flex items-center gap-4 mb-8 border-b border-slate-800 pb-5">
+                    <div class="p-3 bg-slate-800 rounded-xl shadow-inner">
+                        <i data-lucide="layers" class="text-sky-400 w-8 h-8"></i>
+                    </div>
+                    <h2 class="text-4xl font-bold text-white">4. Orquestração Segura</h2>
+                </div>
+
+                <p class="text-slate-300 mb-8 text-xl leading-relaxed">
+                    Unificação do deploy via Docker Compose, garantindo a ordem lógica dos serviços e bloqueando escalação de privilégios.
+                </p>
+
+                <div class="flex-grow flex flex-col justify-center space-y-6">
+                    <!-- Terminal -->
+                    <div class="bg-slate-950 rounded-2xl border border-slate-700 font-mono text-lg relative shadow-2xl overflow-hidden flex flex-col">
+                        <div class="px-6 py-4 border-b border-slate-800 bg-slate-900 flex items-center gap-3">
+                            <span class="text-slate-400 text-sm tracking-wider">docker-compose.yml</span>
+                        </div>
+                        <div class="p-8 text-slate-300 space-y-4">
+                            <div class="text-sky-300">services:</div>
+                            <div class="text-sky-300 pl-4">proxy:</div>
+                            <div class="text-slate-500 italic pl-8"># O proxy acorda apenas quando o webapp estiver pronto</div>
+                            <div class="text-sky-300 pl-8">depends_on:</div>
+                            <div class="text-sky-300 pl-12">- webapp</div>
+                            
+                            <div class="text-slate-500 italic pl-8 mt-4"># Hardening de Privilégios (A Pegadinha de Prova)</div>
+                            <div class="text-emerald-400 font-bold pl-8">security_opt:</div>
+                            <div class="text-emerald-400 font-bold pl-12">- no-new-privileges:true</div>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 bg-slate-800 p-6 rounded-xl border-l-4 border-emerald-500 shadow-lg flex items-start gap-4">
+                        <i data-lucide="lock" class="w-8 h-8 text-emerald-400 mt-1"></i>
+                        <div>
+                            <p class="text-xl text-white font-bold mb-2">No New Privileges</p>
+                            <p class="text-lg text-slate-300">
+                                Impede que um atacante que invadiu o container como usuário comum utilize binários SUID (como <code>sudo</code> ou <code>su</code>) para virar root lá dentro. A permissão base é congelada permanentemente.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 6: AUDIT (GRYPE) -->
+        <div class="slide-container flex flex-col p-12 text-white">
+            <div class="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none"></div>
+
+            <div class="relative z-10 flex flex-col h-full">
+                <div class="flex items-center gap-4 mb-8 border-b border-slate-800 pb-5">
+                    <div class="p-3 bg-slate-800 rounded-xl shadow-inner">
+                        <i data-lucide="bug" class="text-rose-400 w-8 h-8"></i>
+                    </div>
+                    <h2 class="text-4xl font-bold text-white">5. Auditoria de Imagens</h2>
+                </div>
+
+                <p class="text-slate-300 mb-8 text-xl leading-relaxed">
+                    Antes de aprovar para produção, a imagem Ubuntu-based foi escaneada em busca de CVEs (Vulnerabilidades e Exposições Comuns) utilizando o <strong>Grype</strong>.
+                </p>
+
+                <div class="flex-grow flex flex-col justify-center space-y-6">
+                    <!-- Terminal -->
+                    <div class="bg-slate-950 rounded-2xl border border-slate-700 font-mono text-lg relative shadow-2xl overflow-hidden flex flex-col">
+                        <div class="px-6 py-4 border-b border-slate-800 bg-slate-900 flex items-center justify-between">
+                            <span class="text-slate-400 text-sm tracking-wider">Vulnerability Scanning</span>
+                        </div>
+                        <div class="p-8 text-slate-300 space-y-4">
+                            <div class="text-slate-500 italic"># 1. Execução do Scan exportando em JSON</div>
+                            <div class="break-all"><span class="text-emerald-400 mr-2">$</span> grype practica-1-nginx -o json > grype.json</div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 gap-6 text-left mt-4">
+                        <div class="p-6 rounded-xl bg-slate-800 border border-slate-700 shadow-lg">
+                            <span class="block text-sky-400 font-bold text-2xl mb-3 flex items-center gap-3">
+                                <i data-lucide="file-json" class="w-6 h-6"></i> Parseamento Customizado (Python)
+                            </span>
+                            <p class="text-lg text-slate-300 leading-relaxed mb-4">Em vez de ler o JSON cru, um script iterou os dados com lógica de negócio:</p>
+                            <ul class="text-lg text-slate-400 space-y-2 list-disc pl-6">
+                                <li>Filtrou apenas CVEs <strong>Medium, High e Critical</strong>.</li>
+                                <li>Identificou o status <span class="text-rose-400 font-mono">"Won't Fix"</span> (quando a falha existe, mas a fabricante não lançará patch).</li>
+                                <li>Ordenou a matriz de forma decrescente pelo peso do risco.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 7: CONCLUSION -->
+        <div class="slide-container flex flex-col p-12 text-white">
+            <div class="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none"></div>
+
+            <div class="relative z-10 flex flex-col h-full justify-between py-4">
+                <div>
+                    <h2 class="text-5xl font-bold text-white mb-4">A Jornada Continua</h2>
+                    <p class="text-slate-400 text-xl">
+                        O que levo desta prática.
+                    </p>
+                </div>
+
+                <div class="bg-slate-950 p-8 rounded-3xl border border-slate-700 shadow-2xl font-mono text-lg space-y-8 my-8 flex-grow flex flex-col justify-center">
+                    
+                    <div class="flex items-start gap-4">
+                        <i data-lucide="arrow-right-circle" class="w-8 h-8 text-emerald-400 mt-1 flex-shrink-0"></i>
+                        <div>
+                            <p class="text-2xl text-white font-bold mb-2">Build Próprio > Template Oficial</p>
+                            <p class="text-lg text-slate-400 font-sans leading-relaxed">
+                                Subir um serviço partindo de um S.O. limpo garante previsibilidade. Você sabe exatamente o que está rodando, eliminando o inchaço e o risco de imagens "black-box".
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <i data-lucide="arrow-right-circle" class="w-8 h-8 text-sky-400 mt-1 flex-shrink-0"></i>
+                        <div>
+                            <p class="text-2xl text-white font-bold mb-2">Defesa em Profundidade</p>
+                            <p class="text-lg text-slate-400 font-sans leading-relaxed">
+                                Segurança não é apenas o mTLS na porta da frente. É limitar a RAM (para evitar quedas de host), rodar em rede isolada e congelar privilégios com <code>no-new-privileges</code>. A barreira está em todas as camadas.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800 p-8 rounded-2xl border-l-8 border-emerald-500 shadow-2xl mt-auto">
+                    <h3 class="text-white font-bold text-xl mb-1 uppercase tracking-wide">
+                        Evolução Contínua
+                    </h3>
+                    <p class="text-lg text-slate-400 leading-relaxed">
+                        Estes estudos consolidam a visão arquitetural necessária para analisar logs e atuar em resposta a incidentes (IR).
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
+```

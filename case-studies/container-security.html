@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab: Container Security | Paulo Oliveira</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="../assets/js/i18n.js" defer></script>
+
+    <style>
+        .lab-hero {
+            padding: 8rem 0 4rem;
+            text-align: center;
+            background: radial-gradient(circle at top, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
+        }
+        .lab-content { max-width: 900px; margin: 0 auto; padding-bottom: 10rem; }
+        .lab-section { margin-bottom: 6rem; padding: 3rem; }
+        .terminal-block {
+            background: #020617;
+            border: 1px solid var(--surface-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            margin: 1.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="animate-fade-in">
+            <a href="../index.html" class="font-mono" style="text-decoration: none; color: var(--text-secondary); font-size: 0.8rem; font-weight: 700;" data-i18n="nav_back">← VOLTAR_AO_PORTFOLIO</a>
+            <div class="lang-switcher font-mono" style="font-size: 0.75rem;">
+                <button onclick="setLanguage('en')" class="lang-btn" data-lang="en">EN</button>
+                <span style="opacity: 0.3">|</span>
+                <button onclick="setLanguage('pt')" class="lang-btn" data-lang="pt">PT</button>
+            </div>
+        </header>
+
+        <section class="lab-hero animate-fade-in">
+            <div class="badge" style="margin-bottom: 1.5rem; border-color: #10b981; color: #10b981;">DEVSECOPS / CONTAINERS</div>
+            <h1 class="text-gradient" style="font-size: 3.5rem; margin-bottom: 1.5rem;">Container Security & Hardening</h1>
+            <p style="max-width: 700px; margin: 0 auto; color: var(--text-secondary);">Securitização de infraestrutura baseada em Docker. Foco em imagens seguras, isolamento de recursos e controle de acesso mTLS.</p>
+        </section>
+
+        <main class="lab-content">
+            <div class="glass lab-section animate-fade-in">
+                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 2rem;">
+                    <i data-lucide="box" style="color: #10b981;"></i>
+                    <h2 style="font-size: 1.8rem;">1. Imagem Base Hardened</h2>
+                </div>
+                <p style="color: var(--text-secondary);">Construção a partir de S.O. limpo, evitando imagens "black-box" e aplicando o princípio do menor privilégio.</p>
+                
+                <div class="terminal-block">
+                    <span style="color: #10b981;">FROM</span> ubuntu:latest<br>
+                    <span style="color: #38bdf8;">ENV DEBIAN_FRONTEND=noninteractive</span><br>
+                    <span style="color: #94a3b8;">RUN apt-get update && apt-get install -y nginx</span>
+                </div>
+            </div>
+
+            <div class="glass lab-section animate-fade-in">
+                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 2rem;">
+                    <i data-lucide="shield-check" style="color: #38bdf8;"></i>
+                    <h2 style="font-size: 1.8rem;">2. Mutual TLS (mTLS)</h2>
+                </div>
+                <p style="color: var(--text-secondary);">Proxy Reverso configurado para exigir certificados válidos de ambos os lados, garantindo que apenas clientes autorizados acessem a API.</p>
+                
+                <div class="terminal-block">
+                    <span style="color: #64748b;"># nginx.conf</span><br>
+                    <span style="color: #38bdf8;">ssl_client_certificate /etc/nginx/ssl/ca.crt;</span><br>
+                    <span style="color: #10b981; font-weight: bold;">ssl_verify_client on;</span>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script>lucide.createIcons();</script>
+</body>
+</html>
