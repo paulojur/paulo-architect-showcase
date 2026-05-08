@@ -76,11 +76,11 @@
                     <i data-lucide="graduation-cap" class="w-3 h-3 text-white"></i> Field Manual
                 </span>
             </div>
-            <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight" data-i18n="cont_sec_page_title">
                 Container Security<br>
                 <span class="text-tech-600 font-mono tracking-tighter">& Hardening</span>
             </h1>
-            <p class="text-lg text-slate-300 max-w-2xl leading-relaxed mb-8 border-l-2 border-tech-600 pl-4 bg-slate-800/50 p-4 rounded backdrop-blur-sm">
+            <p class="text-lg text-slate-300 max-w-2xl leading-relaxed mb-8 border-l-2 border-tech-600 pl-4 bg-slate-800/50 p-4 rounded backdrop-blur-sm" data-i18n="cont_sec_hero_desc">
                 Securitização <em>from scratch</em> de uma infraestrutura baseada em Docker. Foco em imagens seguras, isolamento de recursos e controle de acesso rigoroso (mTLS).
             </p>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl font-mono text-sm text-slate-300">
@@ -97,10 +97,10 @@
             <div class="p-2 bg-tech-100 rounded text-tech-600">
                 <i data-lucide="file-json" class="w-6 h-6"></i>
             </div>
-            <h2 class="text-3xl font-bold text-tech-900">1. A Imagem Base</h2>
+            <h2 class="text-3xl font-bold text-tech-900" data-i18n="cont_sec_img_title">1. A Imagem Base</h2>
         </div>
         
-        <p class="text-tech-600 text-lg leading-relaxed mb-8">
+        <p class="text-tech-600 text-lg leading-relaxed mb-8" data-i18n="cont_sec_img_desc">
             Evitando caixas-pretas de imagens pré-configuradas: o servidor web (Nginx) foi construído a partir de um S.O. limpo (<code>ubuntu:latest</code>).
         </p>
 
@@ -184,11 +184,11 @@
             <div class="p-2 bg-tech-100 rounded text-tech-600">
                 <i data-lucide="shield" class="w-6 h-6"></i>
             </div>
-            <h2 class="text-3xl font-bold text-tech-900">3. A Muralha (mTLS)</h2>
+            <h2 class="text-3xl font-bold text-tech-900" data-i18n="cont_sec_priv_title">2. Controle de Privilégios</h2>
         </div>
         
-        <p class="text-tech-600 text-lg leading-relaxed mb-8">
-            Criação de um Proxy Reverso que só aceita conexões de clientes que possuam um certificado criptográfico válido (Mutual TLS).
+        <p class="text-tech-600 text-lg leading-relaxed mb-8" data-i18n="cont_sec_priv_desc">
+            Processos em containers não devem rodar como <code>root</code>. O Dockerfile foi configurado para compilar com permissões elevadas, mas executar o binário final sob um usuário restrito.
         </p>
 
         <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 shadow-sm mb-8">
@@ -264,14 +264,14 @@
     <!-- 5. Auditoria de Imagens (Grype) -->
     <section class="py-20 px-6 max-w-5xl mx-auto border-b border-slate-200">
         <div class="flex items-center gap-3 mb-8 border-b border-slate-200 pb-4">
-            <div class="p-2 bg-rose-100 rounded text-rose-600">
-                <i data-lucide="bug" class="w-6 h-6"></i>
+            <div class="p-2 bg-tech-100 rounded text-tech-600">
+                <i data-lucide="search-check" class="w-6 h-6"></i>
             </div>
-            <h2 class="text-3xl font-bold text-tech-900">5. Auditoria de Imagens</h2>
+            <h2 class="text-3xl font-bold text-tech-900" data-i18n="cont_sec_audit_title">5. Auditoria de Imagem (Grype)</h2>
         </div>
         
-        <p class="text-tech-600 text-lg leading-relaxed mb-8">
-            Antes de aprovar para produção, a imagem Ubuntu-based construída foi escaneada em busca de CVEs utilizando o <strong>Grype</strong>.
+        <p class="text-tech-600 text-lg leading-relaxed mb-8" data-i18n="cont_sec_audit_desc">
+            A validação final da segurança da imagem construída, utilizando o scanner <code>grype</code> para detectar vulnerabilidades conhecidas (CVEs) antes do deploy.
         </p>
 
         <div class="bg-tech-900 rounded-xl border border-tech-900 font-mono text-sm shadow-xl overflow-hidden code-glow mb-8">
@@ -304,7 +304,7 @@
                 <div class="p-2 bg-tech-600/20 rounded text-tech-500">
                     <i data-lucide="shield-check" class="w-8 h-8"></i>
                 </div>
-                <h2 class="text-4xl font-bold text-white">A Jornada Continua</h2>
+                <h2 class="text-4xl font-bold text-white" data-i18n="hosp_def_results_title">Resultados Obtidos</h2>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">

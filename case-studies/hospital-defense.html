@@ -76,11 +76,11 @@
                     <i data-lucide="shield" class="w-3 h-3 text-white"></i> Blue Team Lab
                 </span>
             </div>
-            <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight" data-i18n="hosp_def_page_title">
                 Estudo de Caso: Hospital Esperanza Libre<br>
                 <span class="text-tech-600 font-mono tracking-tighter text-2xl md:text-4xl">Parte 2 - Hardening & IDS</span>
             </h1>
-            <p class="text-lg text-slate-300 max-w-2xl leading-relaxed mb-8 border-l-2 border-tech-600 pl-4 bg-slate-800/50 p-4 rounded backdrop-blur-sm">
+            <p class="text-lg text-slate-300 max-w-2xl leading-relaxed mb-8 border-l-2 border-tech-600 pl-4 bg-slate-800/50 p-4 rounded backdrop-blur-sm" data-i18n="hosp_def_hero_desc">
                 A resposta ao incidente: Implementação de Suricata IPS, Patch Management e Auditoria Forense no ambiente previamente comprometido.
             </p>
             <div class="flex flex-wrap gap-3 max-w-3xl font-mono text-xs">
@@ -97,10 +97,10 @@
             <div class="p-2 bg-amber-100 rounded text-amber-600">
                 <i data-lucide="alert-triangle" class="w-6 h-6"></i>
             </div>
-            <h2 class="text-3xl font-bold text-tech-900">1. Diagnóstico Inicial</h2>
+            <h2 class="text-3xl font-bold text-tech-900" data-i18n="hosp_def_diag_title">1. Diagnóstico Inicial</h2>
         </div>
         
-        <p class="text-tech-600 text-lg leading-relaxed mb-8">
+        <p class="text-tech-600 text-lg leading-relaxed mb-12" data-i18n="hosp_def_diag_desc">
             A auditoria externa (feita do container Audit <code>10.10.10.50</code>) revelou um ambiente com softwares legados e vazamento de informações essenciais.
         </p>
 
@@ -134,14 +134,14 @@
         <div class="max-w-5xl mx-auto">
             <div class="flex items-center gap-3 mb-8 border-b border-slate-200 pb-4">
                 <div class="p-2 bg-tech-100 rounded text-tech-600">
-                    <i data-lucide="activity" class="w-6 h-6"></i>
-                </div>
-                <h2 class="text-3xl font-bold text-tech-900">2. Defesa de Rede (IDS/IPS)</h2>
+                <i data-lucide="shield-check" class="w-6 h-6"></i>
             </div>
-            
-            <p class="text-tech-600 text-lg leading-relaxed mb-8">
-                Implementação do <strong>Suricata</strong> no Web Server para detecção e bloqueio ativo de scans e ataques de negação de serviço (DoS).
-            </p>
+            <h2 class="text-3xl font-bold text-tech-900" data-i18n="hosp_def_ids_title">2. Defesa de Rede (IDS/IPS)</h2>
+        </div>
+        
+        <p class="text-tech-600 text-lg leading-relaxed mb-8" data-i18n="hosp_def_ids_desc">
+            Implementação do <strong>Suricata</strong> no Web Server para detecção e bloqueio ativo de scans e ataques de negação de serviço (DoS).
+        </p>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
                 <div class="bg-slate-50 p-6 rounded-xl border border-slate-200">
@@ -175,15 +175,15 @@
         <!-- Web Hardening -->
         <div>
             <div class="flex items-center gap-3 mb-8 border-b border-slate-200 pb-4">
-                <div class="p-2 bg-blue-100 rounded text-blue-600">
-                    <i data-lucide="server" class="w-6 h-6"></i>
-                </div>
-                <h2 class="text-3xl font-bold text-tech-900">3. Web Server Hardening</h2>
+                <div class="p-2 bg-tech-100 rounded text-tech-600">
+                <i data-lucide="server" class="w-6 h-6"></i>
             </div>
-            
-            <p class="text-tech-600 text-lg leading-relaxed mb-6">
-                Mitigação das vulnerabilidades através de Patch Management (atualização via PPA externo) e ofuscação de headers no Apache.
-            </p>
+            <h2 class="text-3xl font-bold text-tech-900" data-i18n="hosp_def_web_title">3. Web Server Hardening</h2>
+        </div>
+        
+        <p class="text-tech-600 text-lg leading-relaxed mb-8" data-i18n="hosp_def_web_desc">
+            Mitigação das vulnerabilidades através de Patch Management (atualização via PPA externo) e ofuscação de headers no Apache.
+        </p>
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 <div class="bg-blue-50 p-6 rounded-xl border-l-4 border-blue-500 lg:col-span-1 h-full flex flex-col justify-center">
@@ -211,15 +211,15 @@
         <!-- SSH Hardening -->
         <div>
             <div class="flex items-center gap-3 mb-8 border-b border-slate-200 pb-4">
-                <div class="p-2 bg-emerald-100 rounded text-emerald-600">
-                    <i data-lucide="lock" class="w-6 h-6"></i>
-                </div>
-                <h2 class="text-3xl font-bold text-tech-900">4. SSH & Controle de Acesso</h2>
+                <div class="p-2 bg-tech-100 rounded text-tech-600">
+                <i data-lucide="key" class="w-6 h-6"></i>
             </div>
-            
-            <p class="text-tech-600 text-lg leading-relaxed mb-6">
-                A auditoria anterior revelou o uso de "Porta Alta" (40022) como medida de segurança. O hardening real precisa ser aplicado nas diretivas de acesso do serviço.
-            </p>
+            <h2 class="text-3xl font-bold text-tech-900" data-i18n="hosp_def_ssh_title">4. SSH & Controle de Acesso</h2>
+        </div>
+        
+        <p class="text-tech-600 text-lg leading-relaxed mb-8" data-i18n="hosp_def_ssh_desc">
+            A auditoria anterior revelou o uso de "Porta Alta" (40022) como medida de segurança. O hardening real precisa ser aplicado nas diretivas de acesso do serviço.
+        </p>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 text-sm">
                 <div class="bg-rose-50 p-4 rounded-xl border border-rose-200 flex items-center gap-3">
@@ -259,15 +259,15 @@
             <!-- Forense -->
             <div>
                 <div class="flex items-center gap-3 mb-8 border-b border-slate-200 pb-4">
-                    <div class="p-2 bg-indigo-100 rounded text-indigo-600">
-                        <i data-lucide="search-code" class="w-6 h-6"></i>
-                    </div>
-                    <h2 class="text-3xl font-bold text-tech-900">5. Forense de Rede (PCAP)</h2>
-                </div>
-                
-                <p class="text-tech-600 text-lg leading-relaxed mb-8">
-                    Coleta e análise de tráfego (packet capture) para evidenciar conexões maliciosas vindas do container de auditoria na rede do hospital.
-                </p>
+                    <div class="p-2 bg-tech-100 rounded text-tech-600">
+                <i data-lucide="activity" class="w-6 h-6"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-tech-900" data-i18n="hosp_def_pcap_title">5. Forense de Rede (PCAP)</h2>
+        </div>
+        
+        <p class="text-tech-600 text-lg leading-relaxed mb-8" data-i18n="hosp_def_pcap_desc">
+            Coleta e análise de tráfego (packet capture) para evidenciar conexões maliciosas vindas do container de auditoria na rede do hospital.
+        </p>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
                     <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-center font-mono">
@@ -298,14 +298,14 @@
             <div>
                 <div class="flex items-center gap-3 mb-8 border-b border-slate-200 pb-4">
                     <div class="p-2 bg-tech-100 rounded text-tech-600">
-                        <i data-lucide="file-search" class="w-6 h-6"></i>
-                    </div>
-                    <h2 class="text-3xl font-bold text-tech-900">6. Auditoria Local (Lynis)</h2>
-                </div>
-                
-                <p class="text-tech-600 text-lg leading-relaxed mb-8">
-                    Scan automatizado de conformidade detectou falha grave de privacidade nos diretórios de usuários, permitindo que chaves SSH fossem lidas (como ocorreu no ataque).
-                </p>
+                <i data-lucide="file-search" class="w-6 h-6"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-tech-900" data-i18n="hosp_def_lynis_title">6. Auditoria Local (Lynis)</h2>
+        </div>
+        
+        <p class="text-tech-600 text-lg leading-relaxed mb-8" data-i18n="hosp_def_lynis_desc">
+            Scan automatizado de conformidade detectou falha grave de privacidade nos diretórios de usuários, permitindo que chaves SSH fossem lidas (como ocorreu no ataque).
+        </p>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-center">
@@ -338,10 +338,10 @@
     <section class="bg-tech-900 text-white py-20 px-6">
         <div class="max-w-5xl mx-auto">
             <div class="flex items-center gap-3 mb-12 border-b border-slate-800 pb-4">
-                <div class="p-2 bg-emerald-500/20 rounded text-emerald-400">
-                    <i data-lucide="check-circle" class="w-8 h-8"></i>
+                <div class="p-2 bg-tech-600/20 rounded text-tech-500">
+                    <i data-lucide="shield-check" class="w-8 h-8"></i>
                 </div>
-                <h2 class="text-4xl font-bold text-white">Resultados Obtidos</h2>
+                <h2 class="text-4xl font-bold text-white" data-i18n="hosp_def_results_title">Resultados Obtidos</h2>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
