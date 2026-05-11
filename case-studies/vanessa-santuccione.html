@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono&display=swap"
         rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../assets/js/i18n.js" defer></script>
     <script>
         tailwind.config = {
             theme: {
@@ -46,6 +47,11 @@
             animation: fadeIn 1s ease-out forwards;
         }
 
+        .lang-btn {
+            background: none; border: none; color: white; cursor: pointer;
+            padding: 0 5px; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;
+        }
+
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -72,7 +78,14 @@
     <nav class="fixed top-0 w-full z-50 bg-tech-900/80 backdrop-blur-md border-b border-white/10 px-6 py-4 no-print">
         <div class="max-w-5xl mx-auto flex justify-between items-center">
             <a href="../index.html" class="text-white font-mono text-sm hover:text-tech-600 transition-colors" data-i18n="nav_back">&larr; VOLTAR_AO_PORTFOLIO</a>
-            <span class="text-tech-400 font-mono text-[10px] uppercase tracking-widest">Projeto: Vanessa Santuccione</span>
+            <div class="flex items-center gap-6">
+                <div class="lang-switcher font-mono" style="font-size: 0.75rem; border-right: 1px solid rgba(255,255,255,0.1); padding-right: 20px;">
+                    <button onclick="setLanguage('en')" class="lang-btn" data-lang="en">EN</button>
+                    <span style="opacity: 0.3; color: white;">|</span>
+                    <button onclick="setLanguage('pt')" class="lang-btn" data-lang="pt">PT</button>
+                </div>
+                <span class="text-tech-400 font-mono text-[10px] uppercase tracking-widest hidden md:inline">Projeto: Vanessa Santuccione</span>
+            </div>
         </div>
     </nav>
 

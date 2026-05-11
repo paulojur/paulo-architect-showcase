@@ -106,10 +106,10 @@
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
             <div class="bg-white p-8 rounded-xl shadow-sm border-l-4 border-amber-500">
-                <h3 class="text-tech-900 font-bold text-lg mb-4">Vulnerabilidades Críticas Identificadas</h3>
+                <h3 class="text-tech-900 font-bold text-lg mb-4" data-i18n="hosp_def_vuln_title">Vulnerabilidades Críticas Identificadas</h3>
                 <ul class="text-slate-600 space-y-3">
-                    <li><i data-lucide="x-circle" class="inline w-4 h-4 text-amber-500 mr-2"></i> <strong>Legacy Software:</strong> Apache 2.4.52 no host 10.10.10.10 (Vulnerável a CVEs conhecidas).</li>
-                    <li><i data-lucide="x-circle" class="inline w-4 h-4 text-amber-500 mr-2"></i> <strong>Server Tokens:</strong> Servidor expondo versão e sistema operacional diretamente nos headers HTTP.</li>
+                    <li><i data-lucide="x-circle" class="inline w-4 h-4 text-amber-500 mr-2"></i> <span data-i18n="hosp_def_vuln_1"><strong>Legacy Software:</strong> Apache 2.4.52 no host 10.10.10.10 (Vulnerável a CVEs conhecidas).</span></li>
+                    <li><i data-lucide="x-circle" class="inline w-4 h-4 text-amber-500 mr-2"></i> <span data-i18n="hosp_def_vuln_2"><strong>Server Tokens:</strong> Servidor expondo versão e sistema operacional diretamente nos headers HTTP.</span></li>
                 </ul>
             </div>
 
@@ -145,12 +145,12 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
                 <div class="bg-slate-50 p-6 rounded-xl border border-slate-200">
-                    <span class="text-tech-600 font-bold block mb-2 text-lg">Modo DROP</span>
-                    <span class="text-slate-600">Abordagem furtiva e silenciosa. O pacote é descartado sem notificar o remetente, forçando um timeout no lado do atacante.</span>
+                    <span class="text-tech-600 font-bold block mb-2 text-lg" data-i18n="hosp_def_drop_title">Modo DROP</span>
+                    <span class="text-slate-600" data-i18n="hosp_def_drop_desc">Abordagem furtiva e silenciosa. O pacote é descartado sem notificar o remetente, forçando um timeout no lado do atacante.</span>
                 </div>
                 <div class="bg-amber-50 p-6 rounded-xl border border-amber-200">
-                    <span class="text-amber-600 font-bold block mb-2 text-lg">Modo REJECT</span>
-                    <span class="text-slate-600">Responde ativamente com RST (TCP) ou ICMP Port Unreachable. Corta a conexão instantaneamente.</span>
+                    <span class="text-amber-600 font-bold block mb-2 text-lg" data-i18n="hosp_def_reject_title">Modo REJECT</span>
+                    <span class="text-slate-600" data-i18n="hosp_def_reject_desc">Responde ativamente com RST (TCP) ou ICMP Port Unreachable. Corta a conexão instantaneamente.</span>
                 </div>
             </div>
 
@@ -187,8 +187,8 @@
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 <div class="bg-blue-50 p-6 rounded-xl border-l-4 border-blue-500 lg:col-span-1 h-full flex flex-col justify-center">
-                    <h3 class="font-bold text-blue-900 mb-2">Ação Corretiva</h3>
-                    <p class="text-slate-700 text-sm">
+                    <h3 class="font-bold text-blue-900 mb-2" data-i18n="hosp_def_action_title">Ação Corretiva</h3>
+                    <p class="text-slate-700 text-sm" data-i18n="hosp_def_action_desc">
                         Repositórios padrão LTS frequentemente travam versões antigas por estabilidade. A solução exigiu adicionar repositórios PPA (Ondrej) para obter a versão de produção mais segura e recente.
                     </p>
                 </div>
@@ -225,15 +225,15 @@
                 <div class="bg-rose-50 p-4 rounded-xl border border-rose-200 flex items-center gap-3">
                     <i data-lucide="x-circle" class="w-6 h-6 text-rose-500"></i>
                     <div>
-                        <span class="font-bold text-rose-900 block">Porta 40022</span>
-                        <span class="text-rose-700">Security by Obscurity (Ineficaz contra nmap scans)</span>
+                        <span class="font-bold text-rose-900 block" data-i18n="hosp_def_port_title">Porta 40022</span>
+                        <span class="text-rose-700" data-i18n="hosp_def_port_desc">Security by Obscurity (Ineficaz contra nmap scans)</span>
                     </div>
                 </div>
                 <div class="bg-emerald-50 p-4 rounded-xl border border-emerald-200 flex items-center gap-3">
                     <i data-lucide="check-circle" class="w-6 h-6 text-emerald-500"></i>
                     <div>
-                        <span class="font-bold text-emerald-900 block">sshd_config</span>
-                        <span class="text-emerald-700">Políticas reais de restrição aplicadas</span>
+                        <span class="font-bold text-emerald-900 block" data-i18n="hosp_def_sshd_title">sshd_config</span>
+                        <span class="text-emerald-700" data-i18n="hosp_def_sshd_desc">Políticas reais de restrição aplicadas</span>
                     </div>
                 </div>
             </div>
@@ -271,11 +271,11 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
                     <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-center font-mono">
-                        <div class="text-slate-500 text-xs mb-2">// Wireshark Filter Logic</div>
+                        <div class="text-slate-500 text-xs mb-2" data-i18n="hosp_def_ws_logic">// Wireshark Filter Logic</div>
                         <div class="text-indigo-600 font-bold text-sm bg-indigo-50 p-3 rounded mb-2">
                             ip.src == 10.10.10.50 && tcp.flags.syn == 1
                         </div>
-                        <div class="text-slate-500 text-xs">
+                        <div class="text-slate-500 text-xs" data-i18n="hosp_def_ws_desc">
                             Isola as tentativas agressivas de conexão (pacotes SYN isolados) partindo diretamente do IP da máquina atacante.
                         </div>
                     </div>
@@ -309,11 +309,11 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-center">
-                        <h3 class="text-rose-600 font-bold mb-2">Diagnóstico de Falha (Antes)</h3>
+                        <h3 class="text-rose-600 font-bold mb-2" data-i18n="hosp_def_diag_fail_title">Diagnóstico de Falha (Antes)</h3>
                         <p class="text-slate-600 font-mono text-sm bg-slate-50 p-3 rounded border border-slate-100">
                             drwxr-xr-x (755) /home/administracion
                         </p>
-                        <p class="text-sm text-slate-500 mt-3">Qualquer usuário logado, incluindo o serviço web comprometido (www-data), podia ler arquivos alheios.</p>
+                        <p class="text-sm text-slate-500 mt-3" data-i18n="hosp_def_diag_fail_desc">Qualquer usuário logado, incluindo o serviço web comprometido (www-data), podia ler arquivos alheios.</p>
                     </div>
 
                     <div class="bg-tech-900 rounded-xl border border-tech-900 font-mono text-sm shadow-xl overflow-hidden code-glow">
@@ -346,15 +346,15 @@
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
                 <div class="bg-[#020617] p-8 rounded-2xl border-t-4 border-tech-500 shadow-xl">
-                    <h3 class="text-tech-400 font-bold text-xl mb-3 flex items-center gap-2"><i data-lucide="shield-check" class="w-5 h-5"></i> Defesa Ativa</h3>
-                    <p class="text-slate-400 leading-relaxed">
+                    <h3 class="text-tech-400 font-bold text-xl mb-3 flex items-center gap-2"><i data-lucide="shield-check" class="w-5 h-5"></i> <span data-i18n="hosp_def_active_def_title">Defesa Ativa</span></h3>
+                    <p class="text-slate-400 leading-relaxed" data-i18n="hosp_def_active_def_desc">
                         Configuração bem-sucedida de IPS (Suricata) bloqueando ataques de DoS e Fuzzing na camada de rede, antes mesmo de atingirem a aplicação web.
                     </p>
                 </div>
 
                 <div class="bg-[#020617] p-8 rounded-2xl border-t-4 border-blue-500 shadow-xl">
-                    <h3 class="text-blue-400 font-bold text-xl mb-3 flex items-center gap-2"><i data-lucide="lock" class="w-5 h-5"></i> Hardening & Compliance</h3>
-                    <p class="text-slate-400 leading-relaxed">
+                    <h3 class="text-blue-400 font-bold text-xl mb-3 flex items-center gap-2"><i data-lucide="lock" class="w-5 h-5"></i> <span data-i18n="hosp_def_hard_comp_title">Hardening & Compliance</span></h3>
+                    <p class="text-slate-400 leading-relaxed" data-i18n="hosp_def_hard_comp_desc">
                         Servidor atualizado via repositório seguro, SSH blindado contra força bruta e permissões de arquivos corrigidas rigorosamente conforme as políticas do Lynis.
                     </p>
                 </div>
